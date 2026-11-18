@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil coach — Sport2Share</title>
+  <meta name="description" content="Profil d'un coach Sport2Share : parcours, diplômes, avis et réservation de séance.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="coachs">
+<script src="layout.js" data-part="header"></script>
+
+<!-- Le contenu est rempli par pages.js à partir de data.js (coach.html?id=ines-morel) -->
+<main data-profile>
+
+<section class="page-hero dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <div class="profile-hero">
+    <div>
+      <nav class="crumbs" aria-label="Fil d'Ariane" data-intro>
+        <a href="index.html">Accueil</a><span aria-hidden="true">/</span>
+        <a href="coachs.html">Coachs</a><span aria-hidden="true">/</span>
+        <a href="coachs.html" data-p-famlink data-p="family">Univers</a>
+      </nav>
+      <h1 class="display profile-name" data-split data-hero data-p-name><span class="line">Coach</span></h1>
+      <div class="profile-meta" data-intro style="--d:.3s">
+        <span><svg aria-hidden="true"><use href="#i-target"/></svg><span data-p="sport"></span></span>
+        <span><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-p="city"></span></span>
+        <span><svg aria-hidden="true"><use href="#i-star"/></svg><span><span data-p="rating"></span> (<span data-p="reviews"></span> avis)</span></span>
+        <span><svg aria-hidden="true"><use href="#i-euro"/></svg><span><span data-p="price"></span> € / heure</span></span>
+      </div>
+      <div class="profile-actions" data-intro style="--d:.4s">
+        <button type="button" class="btn btn-primary btn-lg" data-magnetic data-p-scroll><span data-roll>Réserver une séance</span><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></button>
+        <a href="messages.html" class="btn btn-outline btn-lg" data-p-msg><span data-roll>Envoyer un message</span><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></a>
+      </div>
+    </div>
+    <div class="profile-visual" data-intro style="--d:.5s">
+      <div data-tilt><div class="tilt-in" data-tilt-inner><div class="coach-visual" data-p-visual></div></div></div>
+      <div class="profile-kpis">
+        <div><b data-p="years"></b><span>ans d'expérience</span></div>
+        <div><b data-p="students"></b><span>élèves suivis</span></div>
+        <div><b data-p="reviews"></b><span>avis vérifiés</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light section" data-theme="light" data-rise>
+  <div class="container profile-layout">
+    <div class="profile-main">
+      <!-- Onglets : présentation / formules créées par le coach -->
+      <section class="ptabs-wrap" id="presentation" data-reveal>
+        <div class="ptabs" role="tablist" aria-label="Présentation du coach">
+          <span class="ptabs-ind" data-ptabs-ind aria-hidden="true"></span>
+          <button type="button" class="ptab is-active" role="tab" id="pt-about" aria-controls="pp-about" aria-selected="true" data-ptab="about">À propos</button>
+          <button type="button" class="ptab" role="tab" id="pt-formules" aria-controls="pp-formules" aria-selected="false" tabindex="-1" data-ptab="formules">Mes formules <span class="ptab-count" data-p-fcount></span></button>
+        </div>
+        <div class="ppanel" id="pp-about" role="tabpanel" aria-labelledby="pt-about" data-ppanel="about">
+          <h2 class="block-title">À propos de <span data-p="first"></span></h2>
+          <p class="profile-bio" data-p="bio"></p>
+          <div class="tag-cloud" data-p-tags></div>
+        </div>
+        <div class="ppanel" id="pp-formules" role="tabpanel" aria-labelledby="pt-formules" data-ppanel="formules" hidden>
+          <h2 class="block-title">Les formules de <span data-p="first"></span></h2>
+          <p class="block-lead">Des réductions créées par <span data-p="first"></span> pour plusieurs séances. Choisis-en une : elle s'applique à ta réservation.</p>
+          <div class="formules" data-p-formules></div>
+        </div>
+      </section>
+
+      <section id="valeur">
+        <h2 class="block-title" data-reveal>La vraie valeur de <span data-p="first"></span></h2>
+        <p class="block-lead" data-reveal>Des indicateurs calculés uniquement sur les séances réalisées via Sport2Share. Pas de chiffres déclarés, pas de faux avis.</p>
+        <div class="value-kpis" data-p-kpis data-reveal></div>
+        <div class="crit" data-p-crit data-reveal></div>
+        <ul class="trust" data-p-trust data-reveal></ul>
+      </section>
+
+      <section>
+        <h2 class="block-title" data-reveal>Diplômes &amp; parcours</h2>
+        <ul class="check-list" data-p-diplomas data-reveal></ul>
+      </section>
+
+      <!-- Séance type : rédigée par le coach dans son espace pro (masquée tant qu'il ne l'a pas remplie) -->
+      <section id="seance" data-p-seance-wrap hidden>
+        <h2 class="block-title">Une séance type avec <span data-p="first"></span></h2>
+        <p class="block-lead">Le déroulé décrit par <span data-p="first"></span>.</p>
+        <ol class="session-steps" data-p-seance></ol>
+      </section>
+
+      <section id="avis">
+        <h2 class="block-title" data-reveal>Les avis</h2>
+        <div class="rating-sum" data-reveal>
+          <p class="rating-big"><span data-p="rating"></span><small><span data-p="reviews"></span> avis vérifiés</small></p>
+          <ul class="rating-bars" data-p-bars></ul>
+        </div>
+        <div class="rate-box" id="noter" data-rate-box></div>
+        <div class="review-list" data-p-reviews></div>
+      </section>
+    </div>
+
+    <aside class="panel book" data-book aria-label="Réserver une séance">
+      <div class="book-head">
+        <p class="book-price"><span data-p="price"></span>€ <small>/ heure</small></p>
+        <span class="book-rating"><svg aria-hidden="true"><use href="#i-star"/></svg><span data-p="rating"></span> · <span data-p="reviews"></span> avis</span>
+      </div>
+
+      <div class="book-body" data-book-form>
+        <div><span class="ctl-label">1. Choisis un jour</span><div class="days" data-book-days></div></div>
+        <div><span class="ctl-label">2. Choisis un créneau</span><div class="slots" data-book-slots aria-live="polite"></div></div>
+        <div>
+          <span class="ctl-label">3. Où se retrouver&nbsp;?</span>
+          <div class="places" role="radiogroup" aria-label="Lieu du rendez-vous" data-book-places></div>
+          <div class="field book-home" data-book-home hidden>
+            <input id="book-home" type="text" placeholder=" " autocomplete="street-address" maxlength="140">
+            <label for="book-home">Ton adresse (rue, code postal, ville)</label>
+          </div>
+        </div>
+        <div class="book-formule" data-book-formule hidden></div>
+        <div class="book-sum">
+          <div><span data-book-line></span><span data-book-base></span></div>
+          <div data-book-disc-row hidden><span>Remise formule</span><span data-book-disc>—</span></div>
+          <div class="total"><span>Total</span><b data-book-total>0 €</b></div>
+        </div>
+        <p class="book-msg" role="alert" data-book-msg></p>
+        <div class="book-lock" data-book-lock hidden></div>
+        <button type="button" class="btn btn-primary btn-block" data-book-go>
+          <span class="btn-label">Réserver</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+          <span class="btn-load" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="btn-done" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+        </button>
+        <p class="book-note"><svg aria-hidden="true"><use href="#i-shield"/></svg>Paiement sécurisé · annulation gratuite jusqu'à 48h avant le début de la séance, remboursée à 50 % jusqu'à 1h avant, puis plus remboursée. Report gratuit avec un justificatif médical, jusqu'à 5h avant.</p>
+      </div>
+
+      <div class="book-done" data-book-done hidden>
+        <p class="done-head"><span class="done-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="panel-title" data-done-title>Séance réservée&nbsp;!</span></p>
+        <div class="ticket-big">
+          <div class="ticket-l"><span class="t-day" data-done-day></span><span class="t-mon" data-done-month></span></div>
+          <div class="ticket-r"><span class="t-time" data-done-time></span><span data-done-what></span><span class="t-place" data-done-place></span><span class="badge badge-mint" data-done-badge>Réservé ✓</span></div>
+        </div>
+        <ul class="done-more" data-done-more></ul>
+        <a href="espace.html" class="btn btn-primary btn-block">Voir mon espace <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <button type="button" class="btn btn-ghost btn-block" data-book-again>Réserver une autre séance</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="dark section" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>Dans le même univers</p>
+      <a class="sec-note" href="coachs.html" data-reveal style="--rd:.1s">Tous les coachs →</a>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">Coachs</span>
+      <span class="line">similaires</span>
+    </h2>
+    <div class="similar-grid" data-similar></div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

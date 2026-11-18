@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tous les sports — Sport2Share</title>
+  <meta name="description" content="61 sports répartis en 7 univers : raquettes, combat, endurance, fitness, plein air, collectifs et bien-être.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="sports">
+<script src="layout.js" data-part="header"></script>
+
+<main data-sports-page>
+
+<section class="page-hero dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Sports</span></nav>
+  <h1 class="display page-title" data-split data-hero>
+    <span class="line">61 sports</span>
+    <span class="line">7 univers</span>
+  </h1>
+  <div class="page-hero-row" data-intro style="--d:.3s">
+    <p class="page-lead">Des raquettes aux sports de combat, du surf au yoga : trouve ton sport, puis le coach qui va avec.</p>
+    <form class="search sports-search" role="search" data-sport-form>
+      <svg class="search-ico" aria-hidden="true"><use href="#i-search"/></svg>
+      <label class="sr-only" for="sport-q">Chercher un sport</label>
+      <input id="sport-q" type="search" placeholder="Padel, judo, surf…" autocomplete="off" data-sport-q>
+      <span class="sport-count" data-sport-count aria-live="polite">61 sports</span>
+    </form>
+  </div>
+</section>
+
+<section class="light" data-theme="light" data-rise>
+  <div class="uni-bar">
+    <div class="filters" role="group" aria-label="Aller à un univers">
+      <button type="button" class="filter is-active" data-uni-tab="all" aria-pressed="true">Tous</button>
+      <button type="button" class="filter" data-uni-tab="raquettes" aria-pressed="false">Raquettes</button>
+      <button type="button" class="filter" data-uni-tab="combat" aria-pressed="false">Combat</button>
+      <button type="button" class="filter" data-uni-tab="endurance" aria-pressed="false">Endurance</button>
+      <button type="button" class="filter" data-uni-tab="fitness" aria-pressed="false">Fitness</button>
+      <button type="button" class="filter" data-uni-tab="pleinair" aria-pressed="false">Plein air</button>
+      <button type="button" class="filter" data-uni-tab="collectifs" aria-pressed="false">Collectifs</button>
+      <button type="button" class="filter" data-uni-tab="bienetre" aria-pressed="false">Bien-être</button>
+    </div>
+  </div>
+  <div class="container" data-uni-list></div>
+  <p class="container sports-empty" data-sports-empty hidden>Aucun sport ne correspond à ta recherche. Écris-nous, on recrute peut-être déjà le coach qu'il te faut.</p>
+  <div class="container" style="height: clamp(110px, 12vw, 180px)"></div>
+</section>
+
+<section class="dark section" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>Il manque ton sport&nbsp;?</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">On ajoute de nouveaux sports chaque mois.</p>
+    </div>
+    <h2 class="display display-l" data-split>
+      <span class="line">Dis-nous</span>
+      <span class="line">lequel</span>
+    </h2>
+    <div class="page-hero-row" data-reveal>
+      <p class="page-lead">Une discipline te manque ? Écris-nous : on part à la recherche du coach qu'il te faut.</p>
+      <a href="contact.html?sujet=Autre" class="btn btn-primary btn-lg" data-magnetic><span data-roll>Proposer un sport</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

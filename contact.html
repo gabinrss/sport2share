@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Sport2Share</title>
+  <meta name="description" content="Une question, un partenariat, une demande presse ? Écris à l'équipe Sport2Share : on te répond au plus vite.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="contact">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+
+<section class="page-hero dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Contact</span></nav>
+  <h1 class="display page-title" data-split data-hero>
+    <span class="line">Parlons</span>
+    <span class="line">sport</span>
+  </h1>
+  <p class="page-lead" data-intro style="--d:.3s">Une question sur une séance, un partenariat avec ton club, une demande presse ? Écris-nous, on te répond au plus vite.</p>
+</section>
+
+<section class="light section" data-theme="light" data-rise>
+  <div class="container contact-grid">
+    <div>
+      <h2 class="block-title" data-reveal>On t'écoute</h2>
+      <p class="sec-lead" style="margin:0 0 28px" data-reveal>Choisis le canal qui te va. Pour les questions courantes, l'assistant en bas à droite répond tout de suite.</p>
+      <div class="info-list">
+        <a class="info-card" href="mailto:contact@sport2share.fr" data-reveal><span class="feat-ico"><svg aria-hidden="true"><use href="#i-mail"/></svg></span><span><b>contact@sport2share.fr</b><span>Pour toutes tes questions</span></span></a>
+        <div class="info-card" data-reveal style="--rd:.06s"><span class="feat-ico"><svg aria-hidden="true"><use href="#i-send"/></svg></span><span><b>On te répond au plus vite</b><span>Chaque message est lu par l'équipe</span></span></div>        <a class="info-card" href="#faq" data-chat-open data-reveal style="--rd:.18s"><span class="feat-ico"><svg aria-hidden="true"><use href="#i-bot"/></svg></span><span><b>Assistant automatique</b><span>Réponse immédiate : tarifs, réservations, annulation…</span></span></a>
+      </div>
+    </div>
+
+    <div class="panel" data-reveal style="--rd:.1s">
+      <form class="contact-form" data-contact novalidate>
+        <p class="panel-title" style="margin-bottom:20px">Écris-nous</p>
+        <span class="ctl-label">Sujet</span>
+        <div class="chips-row" style="margin-bottom:20px" role="group" aria-label="Sujet du message">
+          <button type="button" class="chip is-active" data-subject="Élève" aria-pressed="true">Élève</button>
+          <button type="button" class="chip" data-subject="Coach" aria-pressed="false">Coach</button>
+          <button type="button" class="chip" data-subject="Partenariat" aria-pressed="false">Partenariat</button>
+          <button type="button" class="chip" data-subject="Presse" aria-pressed="false">Presse</button>          <button type="button" class="chip" data-subject="Autre" aria-pressed="false">Autre</button>
+        </div>
+        <input type="hidden" name="sujet" value="Élève">
+        <div class="form-grid">
+          <div class="field"><input id="ct-prenom" name="prenom" type="text" placeholder=" " autocomplete="given-name" required><label for="ct-prenom">Prénom</label></div>
+          <div class="field"><input id="ct-email" name="email" type="email" placeholder=" " autocomplete="email" required><label for="ct-email">E-mail</label></div>
+          <div class="field full"><textarea id="ct-msg" name="message" placeholder=" " required minlength="10"></textarea><label for="ct-msg">Ton message</label></div>
+          <label class="check full"><input type="checkbox" name="consent" required><span class="check-box"><svg aria-hidden="true"><use href="#i-check"/></svg></span><span>J'accepte que Sport2Share utilise ces informations pour me répondre</span></label>
+          <button type="submit" class="btn btn-primary btn-block full">
+            <span class="btn-label">Envoyer le message</span><svg class="ico" aria-hidden="true"><use href="#i-send"/></svg>
+            <span class="btn-load" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="btn-done" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+          </button>
+        </div>
+      </form>
+      <div class="form-success" data-contact-done hidden>
+        <span class="success-ico"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+        <h3>Merci <span data-contact-name></span>&nbsp;!</h3>
+        <p>Ton message est bien parti. On te répond au plus vite, par e-mail. (Démo : rien n'a été envoyé.)</p>
+        <button type="button" class="btn btn-ghost" data-contact-again>Écrire un autre message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

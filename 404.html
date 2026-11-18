@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hors-jeu — Sport2Share</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#23002b">
+  <!-- Cette page peut être servie depuis n'importe quelle adresse introuvable : on fixe la base du site
+       (racine en local, /nom-du-depot/ sur GitHub Pages) pour que tous les chemins relatifs fonctionnent. -->
+  <script>(function () { var p = location.pathname.split('/'); var b = /\.github\.io$/.test(location.hostname) && p.length > 2 ? '/' + p[1] + '/' : '/'; document.write('<base href="' + b + '">'); })();</script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="404">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+<section class="lost dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <div>
+    <div class="lost-num" aria-hidden="true" data-intro>404<span class="lost-ball"><svg><use href="#i-ball"/></svg></span></div>
+    <h1 data-intro style="--d:.15s">Hors-jeu&nbsp;!</h1>
+    <p data-intro style="--d:.25s">Cette page n'existe pas, ou plus. Pas de carton rouge : on te ramène sur le terrain.</p>
+    <div class="lost-actions" data-intro style="--d:.35s">
+      <a href="index.html" class="btn btn-primary btn-lg" data-magnetic><span data-roll>Retour à l'accueil</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="coachs.html" class="btn btn-outline btn-lg"><span data-roll>Trouver un coach</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

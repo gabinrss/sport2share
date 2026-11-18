@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mon espace — Sport2Share</title>
+  <meta name="description" content="Ton espace Sport2Share : prochaines séances, progression, objectifs et messages avec ton coach.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="espace">
+<script src="layout.js" data-part="header"></script>
+
+<!-- Espace de démonstration : le prénom vient de la connexion / inscription (mémorisé dans le navigateur) -->
+<main>
+<div class="dash" id="top" data-theme="light" data-dashboard>
+  <aside class="dash-side" aria-label="Menu de l'espace membre">
+    <div class="dash-user">
+      <span class="dash-av" data-dash-initial>C</span>
+      <div><b data-dash-name>Camille</b><span data-dash-role>Compte élève</span></div>
+    </div>
+    <a class="dash-link is-active" href="#apercu"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>Tableau de bord</span></a>
+    <a class="dash-link" href="pro.html" data-coach-only><svg aria-hidden="true"><use href="#i-wallet"/></svg><span>Espace pro</span></a>
+    <a class="dash-link" href="#identite"><svg aria-hidden="true"><use href="#i-user"/></svg><span>Profil &amp; identité</span></a>
+    <a class="dash-link" href="#carte-pro" data-coach-only><svg aria-hidden="true"><use href="#i-card"/></svg><span>Carte pro</span></a>
+    <a class="dash-link" href="#seances"><svg aria-hidden="true"><use href="#i-calendar"/></svg><span>Mes séances</span></a>
+    <a class="dash-link" href="#historique" data-eleve-only><svg aria-hidden="true"><use href="#i-star"/></svg><span>Noter mes coachs</span></a>
+    <a class="dash-link" href="#progression"><svg aria-hidden="true"><use href="#i-trend"/></svg><span>Progression</span></a>
+    <a class="dash-link" href="messages.html"><svg aria-hidden="true"><use href="#i-chat"/></svg><span>Messages</span><span class="dash-badge" data-unread-total hidden></span></a>
+    <a class="dash-link" href="decouvrir.html" data-eleve-only><svg aria-hidden="true"><use href="#i-search"/></svg><span>Trouver un coach</span></a>
+    <a class="dash-link dash-out" href="index.html" data-logout><svg aria-hidden="true"><use href="#i-logout"/></svg><span>Déconnexion</span></a>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-head" id="apercu">
+      <div>
+        <h1 class="display dash-hello" data-split data-hero data-dash-hello><span class="line">Salut</span><span class="line">Camille</span></h1>
+        <p class="dash-date" data-intro style="--d:.3s" data-dash-date></p>
+      </div>
+      <a href="decouvrir.html" class="btn btn-dark btn-lg" data-magnetic data-intro style="--d:.35s"><span data-roll>Réserver une séance</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+
+    <div class="dash-grid">
+      <!-- Succès du profil : ce qu'il reste à compléter (rempli par pages.js) -->
+      <article class="ach-card span-12" id="succes" data-achievements></article>
+      <!-- Photo de profil + pièce d'identité (rempli par pages.js) -->
+      <article class="dcard dcard-dark span-12 idbox" id="identite" data-idcard></article>
+      <!-- Carte professionnelle : comptes coach uniquement (rempli par pages.js) -->
+      <article class="dcard dcard-dark span-12 procard" id="carte-pro" data-coach-only data-procard></article>
+
+      <article class="dcard kpi span-3" data-reveal>
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-calendar"/></svg></span>
+        <b><span data-count="6">0</span></b><span data-role-text data-eleve="séances ce mois-ci" data-coach="séances données ce mois-ci">séances ce mois-ci</span>
+      </article>
+      <article class="dcard kpi span-3" data-reveal style="--rd:.06s">
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-clock"/></svg></span>
+        <b><span data-count="7.5" data-dec="1">0</span>h</b><span data-role-text data-eleve="d'entraînement encadré" data-coach="de coaching réalisées">d'entraînement encadré</span>
+      </article>
+      <article class="dcard kpi span-3" data-reveal style="--rd:.12s">
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-trend"/></svg></span>
+        <b>+<span data-count="38">0</span>%</b><span data-role-text data-eleve="de progression en 12 semaines" data-coach="de progression moyenne de tes élèves">de progression en 12 semaines</span>
+      </article>
+      <article class="dcard kpi span-3" data-reveal style="--rd:.18s">
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-target"/></svg></span>
+        <b><span data-count="4">0</span></b><span data-role-text data-eleve="semaines d'affilée sans rater" data-coach="élèves suivis en ce moment">semaines d'affilée sans rater</span>
+      </article>
+
+      <article class="dcard dcard-dark span-8" data-reveal>
+        <h2>Prochaine séance <a href="coach.html" data-next-coach style="color:var(--lav)">Voir le profil →</a></h2>
+        <div class="next">
+          <div>
+            <p class="next-when" data-next-when>Demain · 18:30</p>
+            <div class="next-info">
+              <span><svg aria-hidden="true"><use href="#i-target"/></svg><span data-next-what></span></span>
+              <span><svg aria-hidden="true"><use href="#i-pin"/></svg><span data-next-where></span></span>
+            </div>
+          </div>
+          <div class="countdown" aria-label="Temps restant avant la séance">
+            <div><b data-cd="d">00</b><span>jours</span></div>
+            <div><b data-cd="h">00</b><span>h</span></div>
+            <div><b data-cd="m">00</b><span>min</span></div>
+            <div><b data-cd="s">00</b><span>s</span></div>
+          </div>
+        </div>
+        <div class="next-actions">
+          <a href="messages.html" class="btn btn-primary" data-next-msg>Envoyer un message <svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></a>
+          <a href="coachs.html" class="btn btn-outline" data-eleve-only>Réserver une autre séance</a>
+          <a href="annuler.html" class="btn btn-ghost next-resched" data-next-resched data-eleve-only hidden><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg>Annuler ou reporter</a>
+        </div>
+      </article>
+
+      <article class="dcard dcard-black span-4" data-reveal style="--rd:.08s">
+        <h2 data-role-text data-eleve="Mes coachs" data-coach="Mes élèves">Mes coachs</h2>
+        <div class="my-coachs" data-my-coachs></div>
+      </article>
+
+      <!-- Notifications : réponses des coachs, séances acceptées / refusées / annulées (rempli par pages.js) -->
+      <article class="dcard span-12 notif-card" id="notifs" data-notifs></article>
+
+      <article class="dcard span-6" id="seances" data-reveal>
+        <h2>Séances à venir <a href="coachs.html" data-eleve-only>Réserver +</a></h2>
+        <div class="sess-list" data-sessions></div>
+      </article>
+
+      <article class="dcard span-6" id="historique" data-eleve-only data-reveal style="--rd:.08s">
+        <h2>Séances passées</h2>
+        <p class="dash-note"><svg aria-hidden="true"><use href="#i-shield"/></svg>Tu ne peux noter un coach qu'après une séance réalisée avec lui : c'est ce qui garantit des avis 100 % vérifiés.</p>
+        <div class="sess-list" data-history></div>
+      </article>
+
+      <article class="dcard span-5 dcard-goals" data-reveal>
+        <h2 data-role-text data-eleve="Objectifs" data-coach="Objectifs de tes élèves">Objectifs</h2>
+        <div class="goals" data-reveal>
+          <div class="goal" style="--i:0;--w:.72"><div><b>Courir 10 km sous 50 min</b><span>72 %</span></div><i></i></div>
+          <div class="goal" style="--i:1;--w:.75"><div><b>8 séances ce mois-ci</b><span>6 / 8</span></div><i></i></div>
+          <div class="goal" style="--i:2;--w:.4"><div><b>Gagner en souplesse</b><span>40 %</span></div><i></i></div>
+        </div>
+      </article>
+
+      <article class="dcard dcard-black span-7 chart-card" id="progression" data-reveal style="--rd:.08s">
+        <h2>Progression</h2>
+        <svg viewBox="0 0 600 180" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e894ff" stop-opacity=".35"/><stop offset="1" stop-color="#e894ff" stop-opacity="0"/></linearGradient></defs>
+          <path class="chart-area" d="M0 168 C40 160 70 150 100 146 S160 128 200 130 S260 104 300 98 S360 80 400 72 S470 46 500 40 S570 20 600 12 L600 180 L0 180 Z"/>
+          <path class="chart-line" pathLength="1" d="M0 168 C40 160 70 150 100 146 S160 128 200 130 S260 104 300 98 S360 80 400 72 S470 46 500 40 S570 20 600 12"/>
+        </svg>
+        <div class="chart-labels"><span>Sem. 1</span><span>Sem. 4</span><span>Sem. 8</span><span>Sem. 12</span></div>
+      </article>
+
+      <article class="dcard span-12 dcard-msgs" id="messages" data-reveal>
+        <h2>Messages <a href="messages.html">Ouvrir la messagerie →</a></h2>
+        <div class="conv-preview" data-conv-preview></div>
+      </article>
+    </div>
+  </div>
+</div>
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

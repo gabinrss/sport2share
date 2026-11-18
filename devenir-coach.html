@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devenir coach — Sport2Share</title>
+  <meta name="description" content="Coach sportif ? Rejoins Sport2Share : des élèves qui te choisissent, agenda et paiements intégrés, virement sous 48h.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="devenir-coach">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+
+<section class="page-hero dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Devenir coach</span></nav>
+  <h1 class="display page-title" data-split data-hero>
+    <span class="line">Transmets</span>
+    <span class="line">ta passion</span>
+  </h1>
+  <div class="page-hero-row" data-intro style="--d:.3s">
+    <div>
+      <p class="page-lead">Tu es coach diplômé ? Les sportifs découvrent ton profil et te réservent directement. Toi, tu t'occupes du terrain. On gère le reste.</p>
+      <div class="profile-actions">
+        <a href="inscription-coach.html" class="btn btn-primary btn-lg" data-magnetic><span data-roll>M'inscrire comme coach</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a href="#simulateur" class="btn btn-outline btn-lg"><span data-roll>Simuler mes revenus</span><svg class="ico" aria-hidden="true"><use href="#i-euro"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>48h</b><span>pour être payé</span></div>
+      <div class="hero-stat"><b>0 %</b><span>de commission sous 10 h/mois</span></div>
+      <div class="hero-stat"><b>0</b><span>prospection</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="light section" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(01) Pourquoi le club</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">1 850 coachs nous font déjà confiance.</p>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">Ton talent</span>
+      <span class="line">Zéro paperasse</span>
+    </h2>
+    <div class="feat-grid">
+      <article class="feat" data-reveal>
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-target"/></svg></span>
+        <h3>Des élèves qui te choisissent</h3>
+        <p>Les sportifs comparent les profils et réservent directement le coach qui leur plaît : tes diplômes et tes avis parlent pour toi.</p>
+      </article>
+      <article class="feat" data-reveal style="--rd:.08s">
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-calendar"/></svg></span>
+        <h3>Agenda &amp; paiements intégrés</h3>
+        <p>Réservations, rappels, encaissements : tout est automatique. Tu te concentres sur tes séances.</p>
+      </article>
+      <article class="feat" data-reveal style="--rd:.16s">
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-euro"/></svg></span>
+        <h3>Payé sous 48h</h3>
+        <p>Les séances sont réglées d'avance par l'élève et virées sur ton compte sous 48h.</p>
+      </article>
+      <article class="feat" data-reveal style="--rd:.24s">
+        <span class="feat-ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <h3>Profil vérifié et mis en avant</h3>
+        <p>Le badge Sport2Share rassure tes futurs élèves et booste ta visibilité dans les résultats.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark section" id="simulateur" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(02) Simulateur</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Estimation indicative, avant impôts et charges.</p>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">Combien</span>
+      <span class="line">tu gagnes&nbsp;?</span>
+    </h2>
+    <div class="sim" data-sim>
+      <div class="sim-ctl" data-reveal>
+        <div class="range">
+          <div class="range-head"><span>Ton tarif horaire</span><b data-sim-rate-label>35 €/h</b></div>
+          <input type="range" min="10" max="150" step="1" value="35" data-sim-rate aria-label="Tarif horaire">
+          <div class="range-scale"><span>10 €</span><span>150 €</span></div>
+        </div>
+        <div class="range">
+          <div class="range-head"><span>Heures de coaching par semaine</span><b data-sim-hours-label>5 h/sem.</b></div>
+          <input type="range" min="1" max="20" step="1" value="5" data-sim-hours aria-label="Heures par semaine">
+          <div class="range-scale"><span>1 h</span><span>20 h</span></div>
+        </div>
+        <p class="sec-lead" style="margin:0">Aucun frais sous 10 heures par mois. Au-delà, la commission dépend de ton volume d'heures.</p>
+      </div>
+      <div class="sim-out" data-reveal style="--rd:.1s">
+        <span class="ctl-label">Revenu net estimé par mois</span>
+        <p class="sim-net" aria-live="polite"><span data-sim-net>0</span><small>€</small></p>
+        <div class="sim-lines">
+          <div><span>Heures par mois</span><b data-sim-month>0 h</b></div>
+          <div><span>Chiffre d'affaires</span><b data-sim-gross>0 €</b></div>
+          <div><span>Commission Sport2Share</span><b data-sim-com>0 €</b></div>
+        </div>
+        <div class="tiers">
+          <div class="tier" data-tier><b>0 %</b>moins de 10 h/mois</div>
+          <div class="tier" data-tier><b>5 %</b>10 à 30 h/mois</div>
+          <div class="tier" data-tier><b>7 %</b>30 à 40 h/mois</div>
+          <div class="tier" data-tier><b>10 %</b>plus de 40 h/mois</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light section" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(03) Comment ça marche</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Compte une semaine entre ta candidature et tes premiers élèves.</p>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">3 étapes</span>
+      <span class="line">pour démarrer</span>
+    </h2>
+    <ol class="timeline" data-reveal>
+      <li class="tl-step" style="--i:0"><span class="tl-dot">1</span><h3>Crée ton profil</h3><p>Ton sport, tes diplômes, tes tarifs et tes disponibilités.</p><span class="tag tag-mint">10 minutes</span></li>
+      <li class="tl-step" style="--i:1"><span class="tl-dot">2</span><h3>Vérification</h3><p>On contrôle ton identité, tes diplômes et ta carte professionnelle.</p><span class="tag tag-amber">sous 72h</span></li>
+      <li class="tl-step" style="--i:2"><span class="tl-dot">3</span><h3>Premiers élèves</h3><p>Les demandes arrivent : tu acceptes celles qui te ressemblent.</p><span class="tag tag-amber">dès J+7</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="dark section" id="postuler" data-theme="dark">
+  <div class="container apply">
+    <div>
+      <div class="sec-head">
+        <p class="eyebrow" data-reveal>(04) Candidature</p>
+      </div>
+      <h2 class="display display-l" data-split>
+        <span class="line">Rejoins</span>
+        <span class="line">l'équipe</span>
+      </h2>
+      <p class="page-lead" data-reveal>Cinq étapes, une dizaine de minutes. On vérifie tes justificatifs sous 72h.</p>
+      <ul class="req-list" data-reveal>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Un diplôme d'encadrement : DE, BPJEPS, DEJEPS, brevet fédéral ou licence STAPS</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Une carte professionnelle d'éducateur sportif à jour</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Une assurance responsabilité civile professionnelle et un numéro SIRET</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>L'envie de transmettre, et de faire progresser</li>
+      </ul>
+    </div>
+
+    <div class="panel panel-esp apply-cta" data-reveal style="--rd:.1s">
+      <p class="panel-title">Inscription coach</p>
+      <p class="apply-cta-lead">Une page dédiée, en 5 étapes. Tu peux créer ton compte tout de suite et compléter les justificatifs plus tard : ton annonce est publiée dès qu'ils sont validés.</p>
+      <ol class="apply-cta-steps">
+        <li><span>1</span><b>Ton compte</b>E-mail et téléphone vérifiés par code</li>
+        <li><span>2</span><b>Identité</b>Pièce d'identité recto verso et selfie</li>
+        <li><span>3</span><b>Carte pro</b>Numéro, photo de la carte, diplôme</li>
+        <li><span>4</span><b>Activité</b>SIRET et assurance RC Pro</li>
+        <li><span>5</span><b>Vérification</b>Récapitulatif et envoi</li>
+      </ol>
+      <a href="inscription-coach.html" class="btn btn-primary btn-lg btn-block" data-magnetic><span data-roll>Commencer mon inscription</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Outils locaux (serveur de prévisualisation), inutiles en ligne
+.claude/
+
+# Fichiers système Windows / OneDrive
+Thumbs.db
+desktop.ini
+*.tmp
+~$*

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Annuler ou reporter une séance — Sport2Share</title>
+  <meta name="description" content="Espace élève : annule gratuitement une séance jusqu'à 48h avant son début, ou reporte-la avec un justificatif médical.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="espace">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+
+<!-- Espace élève : annuler (plus de 48h avant) ou reporter (moins de 48h, justificatif médical) -->
+<section class="page-hero page-hero-compact dark" id="top" data-theme="dark">
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><a href="espace.html">Mon espace</a><span aria-hidden="true">/</span><span>Annuler ou reporter</span></nav>
+  <div class="compact-row" data-intro style="--d:.15s">
+    <h1 class="display compact-title">Annuler ou reporter</h1>
+    <ul class="compact-stats">
+      <li><b>Plus de 48 h</b> avant : annulation gratuite</li>
+      <li><b>De 48 h à 1 h</b> : remboursée à 50 %</li>
+      <li><b>Moins d'1 h</b> : aucun remboursement</li>
+    </ul>
+  </div>
+</section>
+
+<section class="light section rs-section" data-theme="light">
+  <div class="container rs-layout">
+    <div class="rs-main" data-resched aria-live="polite"></div>
+
+    <aside class="rs-rules">
+      <p class="rs-rules-title">Les règles</p>
+      <ol>
+        <li><span>1</span><b>Jusqu'à 48 h avant le début</b>Tu peux annuler gratuitement (remboursement intégral) ou reporter ta séance.</li>
+        <li><span>2</span><b>De 48 h à 1 h avant</b>Tu peux encore annuler, mais seuls 50 % de la séance sont remboursés. L'autre moitié revient au coach.</li>
+        <li><span>3</span><b>Moins d'1 h avant</b>La séance est due en totalité : une annulation n'est plus remboursée.</li>
+        <li><span>4</span><b>Avec un justificatif médical</b>Tu peux reporter gratuitement ta séance à un autre créneau, même à moins de 48 h, mais au plus tard 5 h avant le début.</li>
+      </ol>
+      <p class="rs-rules-note"><svg aria-hidden="true"><use href="#i-lock"/></svg>Ton justificatif sert uniquement à valider le report. Démo : rien n'est envoyé.</p>
+      <a class="auth-link" href="legal.html#cgu">Lire les conditions (CGU)</a>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sport2Share — Le club des coachs sportifs</title>
+  <meta name="description" content="Sport2Share met en relation sportifs et coachs : plus de 60 sports, tous niveaux. Compare les profils et choisis ton coach.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="home">
+<!-- Icônes, navigation, menu mobile et footer : générés par layout.js (communs à toutes les pages) -->
+<script src="layout.js" data-part="header"></script>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" data-loader aria-hidden="true">
+  <div class="loader-top"><span>Sport2Share — le club des coachs sportifs</span><span>Échauffement en cours</span></div>
+  <div class="loader-word">
+    <span style="--i:0">S</span><span style="--i:1">P</span><span style="--i:2">O</span><span style="--i:3">R</span><span style="--i:4">T</span><span style="--i:5" class="hl">2</span><span style="--i:6">S</span><span style="--i:7">H</span><span style="--i:8">A</span><span style="--i:9">R</span><span style="--i:10">E</span>
+  </div>
+  <div class="loader-bottom">
+    <span class="loader-count"><span data-loader-count>0</span>%</span>
+    <span class="loader-bar"><i data-loader-bar></i></span>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero dark" id="top" data-theme="dark" data-mode="eleve">
+  <div class="hero-spot" aria-hidden="true" data-spot></div>
+
+  <div class="hero-top" data-intro style="--d:.05s">
+    <div class="toggle" role="tablist" aria-label="Je suis" data-toggle>
+      <span class="toggle-ind" data-toggle-ind aria-hidden="true"></span>
+      <button class="toggle-pill is-active" type="button" role="tab" aria-selected="true" data-mode="eleve">
+        <svg><use href="#i-cap"/></svg><span>Élève</span>
+      </button>
+      <button class="toggle-pill" type="button" role="tab" aria-selected="false" data-mode="coach">
+        <svg><use href="#i-whistle"/></svg><span>Coach</span>
+      </button>
+    </div>
+    <ul class="hero-meta">
+      <li>+60 sports · tous niveaux</li>
+      <li><span class="live-dot"></span> 238 coachs en ligne</li>
+    </ul>
+  </div>
+
+  <h1 class="hero-title" aria-label="Trouve ton coach" data-hero-title>
+    <span class="line" aria-hidden="true"><span class="hero-word" data-split data-hero data-hero-a>Trouve</span></span>
+    <span class="line line-row" aria-hidden="true">
+      <span class="hero-small" data-hero-b>ton</span>
+      <span class="hero-word" data-split data-hero data-hero-c>Coach</span>
+    </span>
+  </h1>
+
+  <div class="hero-cards" data-hero-cards>
+    <div class="hero-cards-in" data-intro style="--d:.55s">
+      <div class="auth" id="auth" data-auth>
+        <div class="auth-tabs" role="tablist" aria-label="Accès au compte">
+          <span class="auth-ind" data-auth-ind aria-hidden="true"></span>
+          <button class="auth-tab is-active" type="button" role="tab" id="tab-login" aria-selected="true" aria-controls="panel-login" data-auth-tab="login">Connexion</button>
+          <button class="auth-tab" type="button" role="tab" id="tab-signup" aria-selected="false" aria-controls="panel-signup" tabindex="-1" data-auth-tab="signup">Inscription</button>
+        </div>
+
+        <div class="auth-panels" data-auth-panels>
+          <!-- Connexion -->
+          <form class="auth-panel is-active" id="panel-login" role="tabpanel" aria-labelledby="tab-login" data-auth-panel="login" novalidate>
+            <div class="auth-head">
+              <p class="auth-title">Content de te revoir.</p>
+              <p class="auth-sub">Retrouve tes séances, tes messages et ta progression.</p>
+            </div>
+            <div class="field">
+              <input id="login-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+              <label for="login-email">E-mail</label>
+            </div>
+            <div class="field field-pass">
+              <input id="login-pass" name="password" type="password" placeholder=" " autocomplete="current-password" required minlength="6">
+              <label for="login-pass">Mot de passe</label>
+              <button type="button" class="eye" aria-label="Afficher le mot de passe" aria-pressed="false" data-eye><svg><use href="#i-eye"/></svg></button>
+            </div>
+            <div class="auth-row">
+              <label class="check"><input type="checkbox" name="remember"><span class="check-box"><svg><use href="#i-check"/></svg></span><span>Rester connecté</span></label>
+              <a href="#" class="auth-link" data-forgot>Mot de passe oublié&nbsp;?</a>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">
+              <span class="btn-label">Se connecter</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="btn-load" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="btn-done" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+            </button>
+            <p class="auth-msg" role="alert" data-auth-msg></p>
+            <div class="auth-or"><span>ou</span></div>
+            <button class="btn btn-ghost btn-block" type="button" data-magic>
+              <span class="btn-label">Recevoir un lien par e-mail</span>
+              <span class="btn-load" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="btn-done" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+            </button>
+            <div class="demo-box">
+              <p><b>Comptes de démo</b> · mot de passe <code>sport2026</code></p>
+              <div class="chips-row"><button type="button" class="chip" data-demo-fill="eleve@sport2share.fr">Élève · eleve@sport2share.fr</button><button type="button" class="chip" data-demo-fill="coach@sport2share.fr">Coach · coach@sport2share.fr</button></div>
+            </div>
+          </form>
+
+          <!-- Inscription -->
+          <form class="auth-panel" id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" data-auth-panel="signup" novalidate inert>
+            <div class="auth-head">
+              <p class="auth-title">Rejoins le club.</p>
+              <p class="auth-sub">Gratuit, sans engagement. Choisis ton coach dès aujourd'hui.</p>
+            </div>
+            <fieldset class="roles">
+              <legend class="sr-only">Je suis</legend>
+              <label class="role"><input type="radio" name="role" value="eleve" checked data-role-input><span><svg aria-hidden="true"><use href="#i-cap"/></svg>Élève</span></label>
+              <label class="role"><input type="radio" name="role" value="coach" data-role-input><span><svg aria-hidden="true"><use href="#i-whistle"/></svg>Coach</span></label>
+            </fieldset>
+            <!-- Coach : l'inscription se fait sur une page dédiée (identité, carte pro, diplôme, SIRET, assurance) -->
+            <div class="pro-card coach-redirect" data-pro-card hidden>
+              <p class="pro-card-head"><svg aria-hidden="true"><use href="#i-shield"/></svg><span><b>Inscription coach : page dédiée</b>On vérifie tout avant de publier ton annonce, alors l'inscription des coachs a sa propre page, en 5 étapes.</span></p>
+              <ul class="coach-redirect-list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>E-mail et téléphone vérifiés par code</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Pièce d'identité et selfie</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Carte professionnelle (numéro et photo), diplôme</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>SIRET et assurance RC Pro</li>
+              </ul>
+              <a class="btn btn-primary btn-block" href="inscription-coach.html" data-coach-go>Commencer mon inscription coach<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+            <div class="signup-fields" data-signup-fields>
+            <!-- Photo de profil (facultative) -->
+            <label class="avatar-up" data-photo-up>
+              <input type="file" name="photo" accept="image/*" data-photo-input>
+              <span class="avatar-up-img" data-photo-preview><svg aria-hidden="true"><use href="#i-user"/></svg></span>
+              <span class="avatar-up-txt"><b>Photo de profil</b><span data-photo-name>Facultatif · maintenant ou plus tard</span></span>
+              <span class="avatar-up-btn" aria-hidden="true"><svg><use href="#i-upload"/></svg></span>
+            </label>
+            <div class="form-grid">
+              <div class="field">
+                <input id="signup-name" name="firstname" type="text" placeholder=" " autocomplete="given-name" required data-id-account>
+                <label for="signup-name">Prénom</label>
+              </div>
+              <div class="field">
+                <input id="signup-last" name="lastname" type="text" placeholder=" " autocomplete="family-name" required data-id-account>
+                <label for="signup-last">Nom</label>
+              </div>
+            </div>
+            <div class="field">
+              <input id="signup-email" name="email" type="email" placeholder=" " autocomplete="email" required>
+              <label for="signup-email">E-mail</label>
+            </div>
+            <div class="field field-pass">
+              <input id="signup-pass" name="password" type="password" placeholder=" " autocomplete="new-password" required minlength="8" aria-describedby="signup-strength">
+              <label for="signup-pass">Mot de passe</label>
+              <button type="button" class="eye" aria-label="Afficher le mot de passe" aria-pressed="false" data-eye><svg><use href="#i-eye"/></svg></button>
+            </div>
+            <div class="strength" id="signup-strength" data-strength data-score="0">
+              <span class="strength-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span data-strength-label>8 caractères minimum</span>
+            </div>
+            <!-- Pièce d'identité : facultative à l'inscription, obligatoire pour réserver (élève) ou publier son annonce (coach) -->
+            <div class="pro-card id-block" data-id-block>
+              <p class="pro-card-head"><svg aria-hidden="true"><use href="#i-card"/></svg><span><b>Ta pièce d'identité <em class="opt">facultatif</em></b><span data-swap data-eleve="Obligatoire pour réserver une séance. On vérifie que le prénom et le nom sont les mêmes que sur ton compte." data-coach="Obligatoire pour publier ton annonce. On vérifie que le prénom et le nom sont les mêmes que sur ton compte.">Obligatoire pour réserver une séance. On vérifie que le prénom et le nom sont les mêmes que sur ton compte.</span></span></p>
+              <div class="select">
+                <select id="signup-id-type" name="idType" data-id-field>
+                  <option value="">Choisir…</option>
+                  <option>Carte nationale d'identité</option>
+                  <option>Passeport</option>
+                  <option>Titre de séjour</option>
+                </select>
+                <label for="signup-id-type">Type de pièce</label>
+              </div>
+              <label class="upload"><input type="file" name="idFile" accept="image/*,.pdf" data-id-field data-upload><span class="upload-box"><svg aria-hidden="true"><use href="#i-upload"/></svg><span data-upload-name>Ajoute une photo ou un scan de ta pièce</span></span></label>
+              <div class="form-grid">
+                <div class="field"><input id="signup-id-first" name="idFirst" type="text" placeholder=" " autocomplete="off" data-id-field><label for="signup-id-first">Prénom sur la pièce</label></div>
+                <div class="field"><input id="signup-id-last" name="idLast" type="text" placeholder=" " autocomplete="off" data-id-field><label for="signup-id-last">Nom sur la pièce</label></div>
+              </div>
+              <p class="id-match" data-id-match aria-live="polite"></p>
+            </div>
+            <label class="check"><input type="checkbox" name="cgu" required><span class="check-box"><svg><use href="#i-check"/></svg></span><span>J'accepte les <a href="#">CGU</a> du club</span></label>
+            <button class="btn btn-primary btn-block" type="submit">
+              <span class="btn-label" data-swap data-eleve="Créer mon compte élève" data-coach="Créer mon compte coach">Créer mon compte élève</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+              <span class="btn-load" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="btn-done" aria-hidden="true"><svg><use href="#i-check"/></svg></span>
+            </button>
+            <p class="auth-msg" role="alert" data-auth-msg></p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Une fois connecté : espace perso à la place de Connexion / Inscription (rempli par pages.js) -->
+      <div class="me" id="moi" aria-label="Mon espace" data-me hidden></div>
+    </div>
+  </div>
+
+  <div class="hero-bottom" data-intro style="--d:.35s">
+    <p class="hero-lead" data-swap
+       data-eleve="Tennis, boxe, running, escalade, yoga… plus de 60 sports : compare les profils, les avis et les tarifs, puis choisis toi-même ton coach."
+       data-coach="Tennis, boxe, natation ou CrossFit : crée ton profil, les sportifs te découvrent et te réservent directement. Zéro prospection.">Tennis, boxe, running, escalade, yoga… plus de 60 sports : compare les profils, les avis et les tarifs, puis choisis toi-même ton coach.</p>
+    <form class="search" data-search role="search">
+      <svg class="search-ico" aria-hidden="true"><use href="#i-search"/></svg>
+      <label class="sr-only" for="q">Sport recherché</label>
+      <input id="q" name="q" type="text" autocomplete="off" placeholder="Tennis" data-search-input>
+      <button class="btn btn-primary" type="submit" data-magnetic><span data-swap data-eleve="Chercher" data-coach="Postuler">Chercher</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </form>
+    <a href="#concept" class="scroll-hint" aria-label="Défiler vers le concept"><span>Scroll</span><i></i></a>
+  </div>
+</section>
+
+<!-- ============ BANDES DEFILANTES ============ -->
+<section class="tapes dark" data-theme="dark" aria-label="Sports populaires : clique pour voir les coachs">
+  <div class="tape tape-a" data-marquee="-1" data-speed="1" data-pausable>
+    <div class="tape-track">
+      <a class="tape-item" href="coachs.html?sport=Tennis" aria-label="Voir les coachs de tennis">Tennis<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Boxe%20anglaise" aria-label="Voir les coachs de boxe anglaise">Boxe<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Running" aria-label="Voir les coachs de running">Running<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Padel" aria-label="Voir les coachs de padel">Padel<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Natation" aria-label="Voir les coachs de natation">Natation<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Escalade" aria-label="Voir les coachs de escalade">Escalade<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Football" aria-label="Voir les coachs de football">Football<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Yoga" aria-label="Voir les coachs de yoga">Yoga<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+    </div>
+  </div>
+  <div class="tape tape-b" data-marquee="1" data-speed=".8" data-pausable>
+    <div class="tape-track">
+      <a class="tape-item" href="coachs.html?sport=Cyclisme" aria-label="Voir les coachs de cyclisme">Cyclisme<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Judo" aria-label="Voir les coachs de judo">Judo<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Surf" aria-label="Voir les coachs de surf">Surf<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=CrossFit" aria-label="Voir les coachs de crossfit">CrossFit<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Basket" aria-label="Voir les coachs de basket">Basket<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Trail" aria-label="Voir les coachs de trail">Trail<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Ski" aria-label="Voir les coachs de ski">Ski<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+      <a class="tape-item" href="coachs.html?sport=Pilates" aria-label="Voir les coachs de pilates">Pilates<svg aria-hidden="true"><use href="#i-spark"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONCEPT ============ -->
+<section class="concept light section" id="concept" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(01) Le concept</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Pas un annuaire. Un club.</p>
+    </div>
+
+    <h2 class="display display-l concept-title" data-split>
+      <span class="line" data-px="-.12">Un coach</span>
+      <span class="line indent" data-px=".12">Un sportif</span>
+      <span class="line" data-px="-.08">Ton choix</span>
+    </h2>
+
+    <div class="concept-grid">
+      <p class="scrub" data-scrub>Un bon coach peut changer une saison entière. Encore faut-il pouvoir choisir le bon. Sur Sport2Share, tu compares <mark>les profils, les diplômes, les avis</mark> et les tarifs, puis tu choisis toi-même le coach qui te ressemble. Aucun algorithme ne décide à ta place. <mark>Ton choix.</mark></p>
+
+      <ul class="pillars">
+        <li class="pillar pillar-mint" data-reveal style="--rd:0s">
+          <span class="pillar-big">100%</span>
+          <span class="pillar-txt"><b>D'avis vérifiés</b>Seuls les élèves qui ont fait une séance peuvent noter un coach.</span>
+        </li>
+        <li class="pillar pillar-amber" data-reveal style="--rd:.1s">
+          <span class="pillar-big">60+</span>
+          <span class="pillar-txt"><b>Sports, du padel au jiu-jitsu</b>Tous niveaux, du débutant au compétiteur.</span>
+        </li>
+        <li class="pillar pillar-mint" data-reveal style="--rd:.2s">
+          <span class="pillar-big">0€</span>
+          <span class="pillar-txt"><b>D'inscription, sans abonnement</b>Tu ne paies que tes séances.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHODE (scroll horizontal) ============ -->
+<section class="how light" id="methode" data-theme="light" data-hscroll>
+  <div class="how-sticky" data-cursor="Défile">
+    <div class="how-track" data-hs-track>
+      <div class="how-intro">
+        <p class="eyebrow">(02) La méthode</p>
+        <h2 class="display how-title" data-split>
+          <span class="line">4 étapes</span>
+          <span class="line">Zéro</span>
+          <span class="line">blabla</span>
+        </h2>
+        <p class="how-lead">Du premier clic à ta première victoire, tout tient en quatre temps. Continue de défiler.</p>
+      </div>
+
+      <article class="step step-1" data-reveal="side">
+        <div class="step-top"><span class="step-num">01</span><span class="step-tag">61 sports</span></div>
+        <h3 class="step-title">Explore</h3>
+        <p class="step-text">Filtre les coachs par sport, niveau, ville, budget et créneaux, en salle ou en extérieur. Tu vois tout, tu ne rates rien.</p>
+        <div class="step-ui chips">
+          <span style="--i:0">Tennis</span><span style="--i:1">Intermédiaire</span><span style="--i:2">Compétition</span><span style="--i:3">2× / semaine</span><span style="--i:4">Lyon</span><span style="--i:5">≤ 40 €/h</span>
+        </div>
+      </article>
+
+      <article class="step step-2" data-reveal="side">
+        <div class="step-top"><span class="step-num">02</span><span class="step-tag">Avis vérifiés</span></div>
+        <h3 class="step-title">Compare</h3>
+        <p class="step-text">Diplômes et carte pro vérifiés, avis d'élèves, tarifs, disponibilités : compare les profils en toute transparence. C'est toi qui choisis.</p>
+        <div class="step-ui matches">
+          <div class="match" style="--i:0;--w:.98"><span class="m-av">IM</span><span class="m-name">Inès M. · Tennis</span><span class="m-pct">★ 4,9/5</span><i></i></div>
+          <div class="match" style="--i:1;--w:.96"><span class="m-av">PR</span><span class="m-name">Paul R. · Padel</span><span class="m-pct">★ 4,8/5</span><i></i></div>
+          <div class="match" style="--i:2;--w:.98"><span class="m-av">SK</span><span class="m-name">Sarah K. · Boxe</span><span class="m-pct">★ 4,9/5</span><i></i></div>
+        </div>
+      </article>
+
+      <article class="step step-3" data-reveal="side">
+        <div class="step-top"><span class="step-num">03</span><span class="step-tag">1 clic</span></div>
+        <h3 class="step-title">Réserve ta séance</h3>
+        <p class="step-text">Tu choisis ton coach et ton créneau, tu réserves en un clic. Paiement sécurisé, annulation gratuite jusqu'à 48h avant le début de la séance.</p>
+        <div class="step-ui ticket">
+          <div class="ticket-l"><span class="t-day">14</span><span class="t-mon">nov.</span></div>
+          <div class="ticket-r">
+            <span class="t-time">18:00 — 19:00</span>
+            <span class="t-what">Séance · Tennis · Lyon</span>
+            <span class="badge badge-amber"><svg><use href="#i-check"/></svg>Confirmée</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="step step-4" data-reveal="side">
+        <div class="step-top"><span class="step-num">04</span><span class="step-tag">Chaque semaine</span></div>
+        <h3 class="step-title">Progresse</h3>
+        <p class="step-text">Objectifs, comptes-rendus, messagerie&nbsp;: ton coach suit ta progression entre chaque séance.</p>
+        <div class="step-ui chart">
+          <div class="chart-head"><span class="chart-big">+38%</span><span>de progression<br>en 12 semaines</span></div>
+          <svg viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true"><path class="chart-line" pathLength="1" d="M0 84 C30 80 45 72 70 68 S110 56 130 58 S170 40 190 36 S240 20 260 16 S290 6 300 4"/></svg>
+        </div>
+      </article>
+
+      <div class="step step-end" data-reveal="side">
+        <span class="step-end-kicker">Et maintenant&nbsp;?</span>
+        <p class="display step-end-title">À toi<br>de jouer</p>
+        <a href="coachs.html" class="btn btn-dark btn-lg" data-magnetic><span data-roll>Trouver mon coach</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <div class="how-bar" aria-hidden="true">
+      <span class="how-count"><b data-hs-count>01</b> / 04</span>
+      <span class="how-line"><i data-hs-bar></i></span>
+      <span class="how-hint">Défile <svg><use href="#i-arrow"/></svg></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPORTS ============ -->
+<section class="disciplines dark section" id="sports" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(03) Les sports</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Plus de 60 sports, 7 univers. Survole pour explorer.</p>
+    </div>
+
+    <ul class="disc-list">
+      <li class="disc" data-reveal data-icon="i-tennis" data-coaches="310" data-from="30" data-tags="Tennis,Padel,Badminton,Squash,Tennis de table">
+        <a href="#coachs" data-filter="raquettes">
+          <span class="disc-num">01</span>
+          <span class="disc-name"><span class="disc-outline">Raquettes</span><span class="disc-fill" aria-hidden="true">Raquettes</span></span>
+          <span class="disc-count">310 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="disc" data-reveal data-icon="i-glove" data-coaches="260" data-from="28" data-tags="Boxe,MMA,Judo,Karaté,Jiu-jitsu">
+        <a href="#coachs" data-filter="combat">
+          <span class="disc-num">02</span>
+          <span class="disc-name"><span class="disc-outline">Combat</span><span class="disc-fill" aria-hidden="true">Combat</span></span>
+          <span class="disc-count">260 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="disc" data-reveal data-icon="i-shoe" data-coaches="340" data-from="22" data-tags="Running,Trail,Cyclisme,Natation,Triathlon">
+        <a href="#coachs" data-filter="endurance">
+          <span class="disc-num">03</span>
+          <span class="disc-name"><span class="disc-outline">Endurance</span><span class="disc-fill" aria-hidden="true">Endurance</span></span>
+          <span class="disc-count">340 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="disc" data-reveal data-icon="i-dumbbell" data-coaches="380" data-from="25" data-tags="Musculation,CrossFit,HIIT,Pilates,Danse">
+        <a href="#coachs" data-filter="fitness">
+          <span class="disc-num">04</span>
+          <span class="disc-name"><span class="disc-outline">Fitness</span><span class="disc-fill" aria-hidden="true">Fitness</span></span>
+          <span class="disc-count">380 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="disc" data-reveal data-icon="i-mountain" data-coaches="190" data-from="35" data-tags="Surf,Escalade,Ski,Voile,Golf">
+        <a href="#coachs" data-filter="pleinair">
+          <span class="disc-num">05</span>
+          <span class="disc-name"><span class="disc-outline">Plein air</span><span class="disc-fill" aria-hidden="true">Plein air</span></span>
+          <span class="disc-count">190 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="disc" data-reveal data-icon="i-ball" data-coaches="220" data-from="25" data-tags="Football,Basket,Volley,Rugby,Handball">
+        <a href="#coachs" data-filter="collectifs">
+          <span class="disc-num">06</span>
+          <span class="disc-name"><span class="disc-outline">Collectifs</span><span class="disc-fill" aria-hidden="true">Collectifs</span></span>
+          <span class="disc-count">220 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+      <li class="disc" data-reveal data-icon="i-leaf" data-coaches="150" data-from="26" data-tags="Yoga,Stretching,Mobilité,Méditation">
+        <a href="#coachs" data-filter="bienetre">
+          <span class="disc-num">07</span>
+          <span class="disc-name"><span class="disc-outline">Bien-être</span><span class="disc-fill" aria-hidden="true">Bien-être</span></span>
+          <span class="disc-count">150 coachs</span>
+          <span class="disc-arrow"><svg><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mur des sports -->
+    <div class="wall-wrap">
+      <div class="wall-head" data-reveal>
+        <p class="wall-count"><span data-count="61">0</span> sports au club</p>
+        <p class="sec-note">Clique sur un sport pour voir nos coachs · <a href="sports.html" class="wall-link">Tous les sports →</a></p>
+      </div>
+      <ul class="wall" data-stagger aria-label="Tous les sports du club">
+        <li><button type="button" class="sp sp-xl" data-family="raquettes">Tennis</button></li>
+        <li><button type="button" class="sp sp-l" data-family="combat">Boxe anglaise</button></li>
+        <li><button type="button" class="sp" data-family="endurance">Trail</button></li>
+        <li><button type="button" class="sp sp-l" data-family="fitness">Musculation</button></li>
+        <li><button type="button" class="sp sp-l" data-family="pleinair">Surf</button></li>
+        <li><button type="button" class="sp" data-family="raquettes">Badminton</button></li>
+        <li><button type="button" class="sp sp-xl" data-family="collectifs">Football</button></li>
+        <li><button type="button" class="sp" data-family="bienetre">Méditation</button></li>
+        <li><button type="button" class="sp sp-l" data-family="combat">Judo</button></li>
+        <li><button type="button" class="sp sp-xl" data-family="endurance">Running</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Kitesurf</button></li>
+        <li><button type="button" class="sp sp-l" data-family="fitness">CrossFit</button></li>
+        <li><button type="button" class="sp" data-family="raquettes">Squash</button></li>
+        <li><button type="button" class="sp sp-l" data-family="collectifs">Basket</button></li>
+        <li><button type="button" class="sp sp-xl" data-family="bienetre">Yoga</button></li>
+        <li><button type="button" class="sp" data-family="combat">MMA</button></li>
+        <li><button type="button" class="sp sp-l" data-family="endurance">Cyclisme</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Ski</button></li>
+        <li><button type="button" class="sp" data-family="fitness">HIIT</button></li>
+        <li><button type="button" class="sp sp-xl" data-family="raquettes">Padel</button></li>
+        <li><button type="button" class="sp" data-family="collectifs">Volley</button></li>
+        <li><button type="button" class="sp" data-family="combat">Krav-maga</button></li>
+        <li><button type="button" class="sp sp-xl" data-family="endurance">Natation</button></li>
+        <li><button type="button" class="sp sp-l" data-family="fitness">Pilates</button></li>
+        <li><button type="button" class="sp sp-xl" data-family="pleinair">Escalade</button></li>
+        <li><button type="button" class="sp" data-family="raquettes">Tennis de table</button></li>
+        <li><button type="button" class="sp sp-l" data-family="collectifs">Rugby</button></li>
+        <li><button type="button" class="sp" data-family="combat">Karaté</button></li>
+        <li><button type="button" class="sp" data-family="endurance">Marathon</button></li>
+        <li><button type="button" class="sp" data-family="bienetre">Stretching</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Snowboard</button></li>
+        <li><button type="button" class="sp" data-family="fitness">Calisthenics</button></li>
+        <li><button type="button" class="sp" data-family="collectifs">Handball</button></li>
+        <li><button type="button" class="sp sp-l" data-family="combat">Jiu-jitsu</button></li>
+        <li><button type="button" class="sp sp-l" data-family="endurance">Triathlon</button></li>
+        <li><button type="button" class="sp sp-l" data-family="pleinair">Golf</button></li>
+        <li><button type="button" class="sp" data-family="raquettes">Pickleball</button></li>
+        <li><button type="button" class="sp sp-l" data-family="fitness">Danse</button></li>
+        <li><button type="button" class="sp" data-family="collectifs">Hockey</button></li>
+        <li><button type="button" class="sp sp-l" data-family="combat">Boxe thaï</button></li>
+        <li><button type="button" class="sp" data-family="endurance">VTT</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Voile</button></li>
+        <li><button type="button" class="sp" data-family="bienetre">Mobilité</button></li>
+        <li><button type="button" class="sp" data-family="fitness">Haltérophilie</button></li>
+        <li><button type="button" class="sp" data-family="collectifs">Futsal</button></li>
+        <li><button type="button" class="sp" data-family="combat">Escrime</button></li>
+        <li><button type="button" class="sp sp-l" data-family="endurance">Athlétisme</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Skate</button></li>
+        <li><button type="button" class="sp" data-family="fitness">Gymnastique</button></li>
+        <li><button type="button" class="sp" data-family="combat">Taekwondo</button></li>
+        <li><button type="button" class="sp" data-family="endurance">Aviron</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Paddle</button></li>
+        <li><button type="button" class="sp" data-family="bienetre">Barre au sol</button></li>
+        <li><button type="button" class="sp" data-family="fitness">Cardio</button></li>
+        <li><button type="button" class="sp" data-family="combat">Lutte</button></li>
+        <li><button type="button" class="sp" data-family="endurance">Marche nordique</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Équitation</button></li>
+        <li><button type="button" class="sp" data-family="fitness">Prépa physique</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Plongée</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Tir à l'arc</button></li>
+        <li><button type="button" class="sp" data-family="pleinair">Roller</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="disc-preview" data-preview aria-hidden="true"><div class="pv-stack" data-preview-stack></div></div>
+</section>
+
+<!-- ============ COACHS ============ -->
+<section class="coachs light section" id="coachs" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(04) Les coachs</p>
+      <p class="sec-note" data-reveal style="--rd:.1s"><span data-coach-count>8</span> coachs affichés · tous diplômés et vérifiés</p>
+    </div>
+
+    <div class="coachs-head">
+      <h2 class="display display-l" data-split>
+        <span class="line">Les coachs</span>
+        <span class="line">du club</span>
+      </h2>
+      <div class="filters" role="group" aria-label="Filtrer par univers sportif" data-reveal>
+        <button type="button" class="filter is-active" aria-pressed="true" data-filter-btn="all">Tous</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="raquettes">Raquettes</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="combat">Combat</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="endurance">Endurance</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="fitness">Fitness</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="pleinair">Plein air</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="collectifs">Collectifs</button>
+        <button type="button" class="filter" aria-pressed="false" data-filter-btn="bienetre">Bien-être</button>
+      </div>
+    </div>
+
+    <div class="coach-grid" data-coach-grid>
+      <a class="coach" href="coach.html?id=ines-morel" data-cat="raquettes" data-tilt data-reveal style="--rd:0s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-plum">
+            <span class="coach-initials">IM</span>
+            <svg class="coach-icon"><use href="#i-tennis"/></svg>
+            <span class="badge badge-mint coach-badge">Dispo cette semaine</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Inès Morel</h3><span class="rating"><svg><use href="#i-star"/></svg>4,9/5 <small>(128)</small></span></div>
+            <p class="coach-meta">Tennis · Rhône (69)</p>
+            <div class="coach-tags"><span class="tag">Compétition</span><span class="tag">Ados</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>38€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=yanis-belkacem" data-cat="combat" data-tilt data-reveal style="--rd:.08s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-black">
+            <span class="coach-initials">YB</span>
+            <svg class="coach-icon"><use href="#i-glove"/></svg>
+            <span class="badge badge-amber coach-badge">Top coach</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Yanis Belkacem</h3><span class="rating"><svg><use href="#i-star"/></svg>5,0/5 <small>(86)</small></span></div>
+            <p class="coach-meta">Boxe anglaise · Bouches-du-Rhône (13)</p>
+            <div class="coach-tags"><span class="tag">Cardio</span><span class="tag">Débutants</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>35€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=clara-nguyen" data-cat="endurance" data-tilt data-reveal style="--rd:.16s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-teal">
+            <span class="coach-initials">CN</span>
+            <svg class="coach-icon"><use href="#i-wave"/></svg>
+            <span class="badge badge-mint coach-badge">Dispo cette semaine</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Clara Nguyen</h3><span class="rating"><svg><use href="#i-star"/></svg>4,8/5 <small>(212)</small></span></div>
+            <p class="coach-meta">Natation · Paris (75)</p>
+            <div class="coach-tags"><span class="tag">Crawl</span><span class="tag">Triathlon</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>34€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=malik-diallo" data-cat="fitness" data-tilt data-reveal style="--rd:.24s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-esp">
+            <span class="coach-initials">MD</span>
+            <svg class="coach-icon"><use href="#i-dumbbell"/></svg>
+            <span class="badge badge-amber coach-badge">Top coach</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Malik Diallo</h3><span class="rating"><svg><use href="#i-star"/></svg>4,9/5 <small>(301)</small></span></div>
+            <p class="coach-meta">CrossFit &amp; musculation · Nord (59)</p>
+            <div class="coach-tags"><span class="tag">Force</span><span class="tag">Prépa physique</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>30€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=lea-fontaine" data-cat="bienetre" data-tilt data-reveal style="--rd:0s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-plum">
+            <span class="coach-initials">LF</span>
+            <svg class="coach-icon"><use href="#i-leaf"/></svg>
+            <span class="badge badge-mint coach-badge">Dispo cette semaine</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Léa Fontaine</h3><span class="rating"><svg><use href="#i-star"/></svg>4,9/5 <small>(97)</small></span></div>
+            <p class="coach-meta">Yoga vinyasa · Gironde (33)</p>
+            <div class="coach-tags"><span class="tag">Souplesse</span><span class="tag">Récupération</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>28€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=hugo-laurent" data-cat="pleinair" data-tilt data-reveal style="--rd:.08s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-teal">
+            <span class="coach-initials">HL</span>
+            <svg class="coach-icon"><use href="#i-mountain"/></svg>
+            <span class="badge badge-mint coach-badge">Dispo cette semaine</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Hugo Laurent</h3><span class="rating"><svg><use href="#i-star"/></svg>4,7/5 <small>(154)</small></span></div>
+            <p class="coach-meta">Escalade · Isère (38)</p>
+            <div class="coach-tags"><span class="tag">Bloc</span><span class="tag">Falaise</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>32€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=sofia-ricci" data-cat="collectifs" data-tilt data-reveal style="--rd:.16s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-esp">
+            <span class="coach-initials">SR</span>
+            <svg class="coach-icon"><use href="#i-ball"/></svg>
+            <span class="badge badge-amber coach-badge">Top coach</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Sofia Ricci</h3><span class="rating"><svg><use href="#i-star"/></svg>4,9/5 <small>(73)</small></span></div>
+            <p class="coach-meta">Football · Loire-Atlantique (44)</p>
+            <div class="coach-tags"><span class="tag">Technique</span><span class="tag">Gardiens</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>36€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="coach" href="coach.html?id=tom-bernard" data-cat="endurance" data-tilt data-reveal style="--rd:.24s" data-cursor="Profil">
+        <div class="coach-inner">
+          <div class="coach-visual v-black">
+            <span class="coach-initials">TB</span>
+            <svg class="coach-icon"><use href="#i-shoe"/></svg>
+            <span class="badge badge-mint coach-badge">Dispo cette semaine</span>
+            <span class="coach-glare"></span>
+          </div>
+          <div class="coach-body">
+            <div class="coach-row"><h3 class="coach-name">Tom Bernard</h3><span class="rating"><svg><use href="#i-star"/></svg>5,0/5 <small>(59)</small></span></div>
+            <p class="coach-meta">Running &amp; trail · Haute-Savoie (74)</p>
+            <div class="coach-tags"><span class="tag">Semi</span><span class="tag">Ultra</span></div>
+            <div class="coach-foot"><span class="coach-price"><b>25€</b> / heure</span><span class="coach-cta"><svg><use href="#i-arrow"/></svg></span></div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="coachs-foot" data-reveal>
+      <a href="coachs.html" class="btn btn-dark btn-lg" data-magnetic><span data-roll>Voir les 1 850 coachs</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SÉDENTARITÉ & BIEN-ÊTRE ============ -->
+<!-- Chiffres réels et sourcés (OMS 2024, Anses 2022, The Lancet Psychiatry 2018) -->
+<section class="stats dark section" id="sante" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(05) Les chiffres</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Sources : OMS, Anses, The Lancet Psychiatry.</p>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">Sédentarité</span>
+      <span class="line">et bien-être</span>
+    </h2>
+    <p class="stats-kicker" data-reveal>Le vrai adversaire, c'est le canapé : ce que disent les études sur le manque d'activité physique et ses effets sur la santé.</p>
+    <div class="stats-grid">
+      <div class="stat" data-reveal>
+        <span class="stat-num"><span data-count="31">0</span><em>%</em></span>
+        <span class="stat-label">des adultes dans le monde ne bougent pas assez, soit près de 1,8 milliard de personnes</span>
+        <span class="stat-src">OMS, 2024 · données 2022</span>
+      </div>
+      <div class="stat" data-reveal style="--rd:.1s">
+        <span class="stat-num"><span data-count="80">0</span><em>%</em></span>
+        <span class="stat-label">des adolescents dans le monde n'atteignent pas l'activité recommandée de 60 minutes par jour</span>
+        <span class="stat-src">OMS</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat-num"><span data-count="95">0</span><em>%</em></span>
+        <span class="stat-label">des adultes en France n'ont pas une activité physique suffisante pour protéger leur santé</span>
+        <span class="stat-src">Anses, 2022</span>
+      </div>
+      <div class="stat" data-reveal style="--rd:.1s">
+        <span class="stat-num">20–30<em>%</em></span>
+        <span class="stat-label">de risque de décès en plus pour les personnes qui ne bougent pas assez</span>
+        <span class="stat-src">OMS</span>
+      </div>
+    </div>
+
+    <div class="stats-good">
+      <h3 class="stats-sub" data-reveal>Et la bonne nouvelle&nbsp;?</h3>
+      <div class="stats-grid">
+        <div class="stat" data-reveal>
+          <span class="stat-num">−<span data-count="43">0</span><em>%</em></span>
+          <span class="stat-label">de jours de mal-être déclarés chez les personnes qui font du sport, par rapport à celles qui n'en font pas (étude sur 1,2 million d'adultes)</span>
+          <span class="stat-src">The Lancet Psychiatry, 2018</span>
+        </div>
+        <div class="stat" data-reveal style="--rd:.1s">
+          <span class="stat-num"><span data-count="150">0</span><em>min</em></span>
+          <span class="stat-label">d'activité modérée par semaine : c'est la recommandation de l'OMS pour un adulte. Soit 30 minutes, 5 jours sur 7.</span>
+          <span class="stat-src">OMS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ELEVE / COACH ============ -->
+<section class="paths light section" id="join" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(06) Rejoindre</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Deux portes, un seul club.</p>
+    </div>
+    <h2 class="display display-l paths-title" data-split><span class="line">Tu es…</span></h2>
+
+    <div class="paths-grid">
+      <a href="#auth" class="path path-eleve" data-reveal data-cursor="Go" data-auth-open="signup" data-role="eleve">
+        <div class="path-top">
+          <span class="path-kicker">(A) Tu veux progresser</span>
+          <span class="path-arrow"><svg><use href="#i-arrow-ne"/></svg></span>
+        </div>
+        <ul class="path-list">
+          <li style="--i:0"><svg><use href="#i-check"/></svg>Tu choisis ton coach parmi 1 850 profils vérifiés</li>
+          <li style="--i:1"><svg><use href="#i-check"/></svg>Des coachs diplômés et vérifiés</li>
+          <li style="--i:2"><svg><use href="#i-check"/></svg>Paiement sécurisé, sans abonnement</li>
+          <li style="--i:3"><svg><use href="#i-check"/></svg>Suivi de progression entre les séances</li>
+        </ul>
+        <div class="path-bottom">
+          <span class="path-title">Élève</span>
+          <span class="path-cta">Trouver mon coach</span>
+        </div>
+      </a>
+
+      <a href="#auth" class="path path-coach" data-reveal style="--rd:.12s" data-cursor="Go" data-auth-open="signup" data-role="coach">
+        <div class="path-top">
+          <span class="path-kicker">(B) Tu veux transmettre</span>
+          <span class="path-arrow"><svg><use href="#i-arrow-ne"/></svg></span>
+        </div>
+        <ul class="path-list">
+          <li style="--i:0"><svg><use href="#i-check"/></svg>Des élèves qui te choisissent, sans prospection</li>
+          <li style="--i:1"><svg><use href="#i-check"/></svg>Agenda, messagerie et paiements intégrés</li>
+          <li style="--i:2"><svg><use href="#i-check"/></svg>Virement sous 48h, 0 % de frais sous 10 h/mois</li>
+          <li style="--i:3"><svg><use href="#i-check"/></svg>Profil vérifié et mis en avant</li>
+        </ul>
+        <div class="path-bottom">
+          <span class="path-title">Coach</span>
+          <span class="path-cta">Devenir coach</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AVIS ============ -->
+<section class="reviews dark section" id="avis" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(07) Ils ont choisi</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">38 000 avis · 4,9 / 5</p>
+    </div>
+    <h2 class="display display-l" data-split>
+      <span class="line">Ils en</span>
+      <span class="line">parlent</span>
+    </h2>
+  </div>
+
+  <div class="review-rows">
+    <div class="review-row" data-marquee="-1" data-speed=".7" data-pausable>
+      <div class="tape-track">
+        <figure class="review">
+          <div class="review-stars" aria-label="5 étoiles"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <blockquote>En trois mois avec Inès, je suis passée de débutante à mon premier tournoi. Le courant est passé dès la première séance.</blockquote>
+          <figcaption><span class="r-av">CA</span><span><b>Camille, 16 ans</b><small>Tennis · Lyon</small></span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="review-stars" aria-label="5 étoiles"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <blockquote>J'avais lâché le foot après une blessure. Sofia m'a remis en confiance avec une prépa sur mesure. Je rejoue en club.</blockquote>
+          <figcaption><span class="r-av">NA</span><span><b>Nathan, 17 ans</b><small>Football · Nantes</small></span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="review-stars" aria-label="5 étoiles"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <blockquote>Côté coach, le club m'envoie des sportifs motivés. Je gère mon planning et je suis payé sous 48h. Rien à redire.</blockquote>
+          <figcaption><span class="r-av">YB</span><span><b>Yanis, coach</b><small>Boxe · Marseille</small></span></figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="review-row" data-marquee="1" data-speed=".55" data-pausable>
+      <div class="tape-track">
+        <figure class="review">
+          <div class="review-stars" aria-label="5 étoiles"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <blockquote>Reprendre le sport à 42 ans, je n'y croyais plus. Léa a construit un programme de yoga rien que pour moi.</blockquote>
+          <figcaption><span class="r-av">SO</span><span><b>Sophie, 42 ans</b><small>Yoga · Bordeaux</small></span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="review-stars" aria-label="5 étoiles"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <blockquote>De 10 à 21 km en quatre mois avec Tom. Le suivi entre les séances fait toute la différence.</blockquote>
+          <figcaption><span class="r-av">JU</span><span><b>Julien, 29 ans</b><small>Running · Annecy</small></span></figcaption>
+        </figure>
+        <figure class="review">
+          <div class="review-stars" aria-label="5 étoiles"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+          <blockquote>Hugo a corrigé ma technique de grimpe dès la première séance. En deux mois, je suis passé du 5c au 6b.</blockquote>
+          <figcaption><span class="r-av">KA</span><span><b>Karim, 24 ans</b><small>Escalade · Grenoble</small></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta dark" id="cta" data-theme="dark">
+  <div class="cta-inner">
+    <p class="eyebrow" data-reveal>(08) Dernier round</p>
+    <h2 class="display cta-title" data-grow>
+      <span class="line" data-split>Prêt à</span>
+      <span class="line" data-split>choisir&nbsp;?</span>
+    </h2>
+    <div class="cta-row">
+      <div class="cta-form-wrap" data-reveal>
+        <p class="cta-lead">1 850 coachs vérifiés à découvrir. Gratuit, sans engagement.</p>
+        <form class="search cta-form" data-signup>
+          <label class="sr-only" for="email">Ton adresse e-mail</label>
+          <input id="email" name="email" type="email" required placeholder="ton@email.fr" autocomplete="email">
+          <button class="btn btn-primary" type="submit" data-magnetic><span data-roll>Rejoindre le club</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </form>
+      </div>
+      <a href="#top" class="spin-badge" data-reveal="scale" aria-label="Rejoins le club, retour en haut">
+        <svg class="spin-text" viewBox="0 0 200 200" data-spin aria-hidden="true">
+          <defs><path id="circle-path" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text><textPath href="#circle-path">Rejoins le club ✦ Choisis ton coach ✦ Rejoins le club ✦ Choisis ton coach ✦</textPath></text>
+        </svg>
+        <span class="spin-core"><svg><use href="#i-arrow-up"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

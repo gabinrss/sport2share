@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trouver un coach — Sport2Share</title>
+  <meta name="description" content="1 850 coachs sportifs diplômés et vérifiés. Filtre par sport, budget, ville et disponibilité, puis réserve ta séance.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="coachs">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+
+<!-- En-tête réduit : les annonces arrivent directement -->
+<section class="page-hero page-hero-compact dark" id="top" data-theme="dark">
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Coachs</span></nav>
+  <div class="compact-row" data-intro style="--d:.15s">
+    <h1 class="display compact-title">Trouve ton coach</h1>
+    <ul class="compact-stats">
+      <li><b>1 850</b> coachs vérifiés</li>
+      <li><b>4,9/5</b> note moyenne</li>
+      <li><b>61</b> sports</li>
+    </ul>
+  </div>
+</section>
+
+<section class="light section cat-section cat-section-tight" data-theme="light" data-catalogue>
+  <div class="container">
+    <div class="cat-layout">
+      <aside class="panel cat-filters" aria-label="Filtres de recherche">
+        <div class="ctl-group">
+          <div class="field">
+            <input id="cat-q" type="search" placeholder=" " autocomplete="off" data-cat-q>
+            <label for="cat-q">Sport, coach, département…</label>
+          </div>
+        </div>
+        <div class="ctl-group">
+          <span class="ctl-label">Univers</span>
+          <div class="chips-row">
+            <button type="button" class="chip" data-cat-fam="all">Tous</button>
+            <button type="button" class="chip" data-cat-fam="raquettes">Raquettes</button>
+            <button type="button" class="chip" data-cat-fam="combat">Combat</button>
+            <button type="button" class="chip" data-cat-fam="endurance">Endurance</button>
+            <button type="button" class="chip" data-cat-fam="fitness">Fitness</button>
+            <button type="button" class="chip" data-cat-fam="pleinair">Plein air</button>
+            <button type="button" class="chip" data-cat-fam="collectifs">Collectifs</button>
+            <button type="button" class="chip" data-cat-fam="bienetre">Bien-être</button>
+          </div>
+        </div>
+        <div class="ctl-group range">
+          <div class="range-head"><span>Prix maximum</span><b data-cat-price-label>150 €</b></div>
+          <input type="range" min="10" max="150" step="5" value="150" data-cat-price aria-label="Prix maximum par heure">
+          <div class="range-scale"><span>10 €</span><span>150 €</span></div>
+        </div>
+        <div class="ctl-group">
+          <div class="select">
+            <select id="cat-dept" data-cat-dept><option value="all">Tous les départements</option></select>
+            <label for="cat-dept">Département</label>
+          </div>
+        </div>
+        <div class="ctl-group">
+          <span class="ctl-label">Note minimum</span>
+          <div class="chips-row">
+            <button type="button" class="chip" data-cat-note="0">Toutes</button>
+            <button type="button" class="chip" data-cat-note="4.8">4,8 et +</button>
+            <button type="button" class="chip" data-cat-note="4.9">4,9 et +</button>
+          </div>
+        </div>
+        <div class="ctl-group">
+          <label class="switch"><span>Dispo cette semaine</span><input type="checkbox" data-cat-dispo><span class="switch-track"></span></label>
+        </div>
+        <div class="ctl-group">
+          <button type="button" class="btn btn-outline btn-block" data-cat-reset>Réinitialiser les filtres</button>
+        </div>
+      </aside>
+
+      <div class="cat-results">
+        <div class="cat-top">
+          <p class="cat-count" data-cat-count aria-live="polite">18 coachs</p>
+          <div class="cat-sort" role="group" aria-label="Trier les résultats">
+            <button type="button" class="btn btn-dark cat-toggle" data-cat-toggle aria-expanded="false">Filtres <svg class="ico" aria-hidden="true"><use href="#i-filter"/></svg></button>
+            <span>Trier&nbsp;:</span>
+            <button type="button" class="filter" data-cat-sort="pert">Pertinence</button>
+            <button type="button" class="filter" data-cat-sort="prix">Prix</button>
+            <button type="button" class="filter" data-cat-sort="note">Note</button>
+          </div>
+        </div>
+        <p class="cat-notice" data-cat-notice hidden><span data-cat-notice-text></span><button type="button" data-cat-reset>Voir tous les coachs <svg aria-hidden="true"><use href="#i-x"/></svg></button></p>
+        <div class="cat-grid" data-cat-grid></div>
+        <div class="cat-empty" data-cat-empty hidden>
+          <b>Aucun coach</b>
+          <p>Élargis un peu tes critères : prix, ville ou univers.</p>
+          <button type="button" class="btn btn-dark" data-cat-reset>Réinitialiser les filtres</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark section" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>Besoin d'un conseil</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">On te répond au plus vite.</p>
+    </div>
+    <h2 class="display display-l" data-split>
+      <span class="line">Tu hésites</span>
+      <span class="line">encore&nbsp;?</span>
+    </h2>
+    <div class="page-hero-row" data-reveal>
+      <p class="page-lead">Écris-nous : l'équipe t'aide à comparer les profils. Mais le dernier mot, c'est toujours toi qui l'as.</p>
+      <a href="contact.html?sujet=Élève" class="btn btn-primary btn-lg" data-magnetic><span data-roll>Demander conseil</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

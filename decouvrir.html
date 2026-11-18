@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Découvrir — Sport2Share</title>
+  <meta name="description" content="Trouve ton coach sportif en quelques clics : un sport, un département, un créneau.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="decouvrir">
+<script src="layout.js" data-part="header"></script>
+
+<!-- Page d'accueil des élèves connectés (contenu généré par pages.js à partir de data.js) -->
+<main data-discover>
+<section class="vx light" id="top" data-theme="light">
+
+  <!-- Barre de recherche collante -->
+  <div class="vx-bar" data-vx-bar>
+    <form class="vx-search" role="search" data-vx-form autocomplete="off">
+      <span class="vx-field">
+        <svg aria-hidden="true"><use href="#i-search"/></svg>
+        <input type="search" placeholder="Rechercher un sport, un coach…" aria-label="Rechercher un sport ou un coach" aria-controls="vx-suggest" aria-expanded="false" data-vx-q>
+      </span>
+      <button type="button" class="vx-dept-btn" data-vx-dept-open aria-haspopup="dialog">
+        <svg aria-hidden="true"><use href="#i-pin"/></svg><span data-vx-dept-label>Toute la France</span><svg class="vx-chev" aria-hidden="true"><use href="#i-chevron"/></svg>
+      </button>
+      <button type="submit" class="btn btn-dark vx-go">Rechercher</button>
+      <div class="vx-suggest" id="vx-suggest" role="listbox" data-vx-suggest hidden></div>
+    </form>
+    <nav class="vx-cats" aria-label="Univers sportifs" data-vx-cats></nav>
+  </div>
+
+  <div class="container vx-body">
+    <div class="vx-hello">
+      <h1 class="display vx-title" data-split data-hero data-vx-hello><span class="line">Salut</span><span class="line">Camille</span></h1>
+      <p class="vx-lead" data-intro style="--d:.3s">Trouve ton coach en trois clics : un sport, ton département, un créneau. Le choix t'appartient.</p>
+    </div>
+
+    <div class="vx-banner" data-reveal>
+      <div>
+        <p class="eyebrow" style="color:var(--lav)">Cette semaine</p>
+        <p class="vx-banner-title">Des coachs<br>dispo maintenant.</p>
+        <button type="button" class="btn btn-primary" data-vx-dispo>Voir les coachs dispo<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      </div>
+      <div class="vx-banner-faces" aria-hidden="true" data-vx-faces></div>
+    </div>
+
+    <div data-vx-rows></div>
+
+    <section class="vx-results" id="tous" aria-label="Tous les coachs">
+      <div class="vx-results-head">
+        <h2 class="vx-h2" data-vx-count aria-live="polite">Tous les coachs</h2>
+        <div class="vx-filters" data-vx-filters></div>
+      </div>
+      <div class="vx-active" data-vx-active></div>
+      <div class="vx-grid" data-vx-grid></div>
+      <div class="vx-empty" data-vx-empty hidden></div>
+      <div class="vx-more"><button type="button" class="btn btn-dark" data-vx-more hidden>Afficher plus de coachs</button></div>
+    </section>
+  </div>
+</section>
+
+<!-- Choix du département -->
+<div class="vx-modal" data-vx-modal hidden>
+  <div class="vx-modal-box" role="dialog" aria-modal="true" aria-labelledby="vx-modal-title">
+    <header>
+      <p id="vx-modal-title">Ton département</p>
+      <button type="button" class="vx-close" data-vx-close aria-label="Fermer"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+    </header>
+    <label class="vx-field vx-modal-search">
+      <svg aria-hidden="true"><use href="#i-search"/></svg>
+      <input type="search" placeholder="Numéro ou nom : 69, Gironde…" aria-label="Chercher un département" data-vx-dept-q>
+    </label>
+    <div class="vx-dept-list" data-vx-dept-list></div>
+  </div>
+</div>
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

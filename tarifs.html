@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarifs — Sport2Share</title>
+  <meta name="description" content="Inscription gratuite, sans abonnement : tu ne paies que tes séances. Aucun frais pour les coachs sous 10 heures par mois.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="tarifs">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+
+<section class="page-hero dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Tarifs</span></nav>
+  <h1 class="display page-title" data-split data-hero>
+    <span class="line">Zéro</span>
+    <span class="line">abonnement</span>
+  </h1>
+  <div class="page-hero-row" data-intro style="--d:.3s">
+    <p class="page-lead">Côté élève, l'inscription est gratuite et tu ne paies que tes séances. Côté coach, aucun frais sous 10 heures par mois.</p>
+    <div class="toggle" role="tablist" aria-label="Voir les tarifs pour">
+      <span class="toggle-ind" data-toggle-ind aria-hidden="true"></span>
+      <button class="toggle-pill is-active" type="button" role="tab" aria-selected="true" data-mode="eleve"><svg aria-hidden="true"><use href="#i-cap"/></svg><span>Élève</span></button>
+      <button class="toggle-pill" type="button" role="tab" aria-selected="false" data-mode="coach"><svg aria-hidden="true"><use href="#i-whistle"/></svg><span>Coach</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="light section" data-theme="light" data-rise data-pricing>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(01) Les formules</p>
+      <p class="sec-note" data-reveal style="--rd:.1s" data-swap data-eleve="Prix fixé librement par chaque coach." data-coach="Commission prélevée uniquement sur les séances réalisées.">Prix fixé librement par chaque coach.</p>
+    </div>
+
+    <div class="price-panel" data-price-panel="eleve">
+      <div class="price-grid">
+        <article class="price-card" data-reveal>
+          <p class="price-name">À la séance</p>
+          <p class="price-amount">Libre<small>fixé uniquement par le coach</small></p>
+          <p class="price-desc">Le tarif est fixé uniquement par le coach : Sport2Share n'impose ni prix minimum ni grille. Tu vois son prix sur son profil avant de réserver, sans frais d'inscription.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Accès libre à tous les profils de coachs</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Messagerie avec ton coach</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Annulation gratuite jusqu'à 48h avant la séance</li>
+          </ul>
+          <a href="connexion.html#inscription" class="btn btn-dark btn-block">Créer mon compte</a>
+        </article>
+        <article class="price-card is-featured" data-reveal style="--rd:.08s">
+          <span class="badge badge-mint price-flag">Créées par les coachs</span>
+          <p class="price-name">Les formules du coach</p>
+          <p class="price-amount">Au choix<small>remise fixée par le coach</small></p>
+          <p class="price-desc">Chaque coach peut créer ses propres formules sur plusieurs séances, avec la réduction de son choix. Tu les trouves dans l'onglet « Mes formules » de son profil.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Nombre de séances et remise choisis par le coach</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Prix total affiché avant de réserver</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Appliquée en un clic à ta réservation</li>
+          </ul>
+          <a href="coachs.html" class="btn btn-primary btn-block">Choisir un coach</a>
+        </article>
+        <article class="price-card" data-reveal style="--rd:.16s">
+          <p class="price-name">Chez toi ou sur place</p>
+          <p class="price-amount">0€<small>de frais de déplacement</small></p>
+          <p class="price-desc">Le coach indique où il coache : à domicile, en salle, au club, en extérieur ou en visio. Tu choisis le lieu qui te va au moment de réserver.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Adresse du rendez-vous affichée</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>« Chez vous » si le coach se déplace</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Lieu rappelé dans ton espace</li>
+          </ul>
+          <a href="coachs.html" class="btn btn-dark btn-block">Choisir un coach</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="price-panel" data-price-panel="coach" hidden>
+      <div class="price-grid price-grid-4">
+        <article class="price-card is-featured">
+          <span class="badge badge-mint price-flag">Sans frais</span>
+          <p class="price-name">Démarrage</p>
+          <p class="price-amount">0%<small>de commission</small></p>
+          <p class="price-desc">Moins de 10 heures de coaching dans le mois : on ne prend aucun frais.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Profil vérifié, visible dans les recherches</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Agenda et paiements intégrés</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Virement sous 48h</li>
+          </ul>
+          <a href="inscription-coach.html" class="btn btn-primary btn-block">Devenir coach</a>
+        </article>
+        <article class="price-card">
+          <p class="price-name">Régulier</p>
+          <p class="price-amount">5%<small>de commission</small></p>
+          <p class="price-desc">De 10 à 30 heures de coaching dans le mois.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Tout le palier Démarrage</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Statistiques de ton activité</li>
+          </ul>
+          <a href="inscription-coach.html" class="btn btn-dark btn-block">Devenir coach</a>
+        </article>
+        <article class="price-card">
+          <p class="price-name">Confirmé</p>
+          <p class="price-amount">7%<small>de commission</small></p>
+          <p class="price-desc">De 30 à 40 heures de coaching dans le mois.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Tout le palier Régulier</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Mise en avant dans les résultats</li>
+          </ul>
+          <a href="inscription-coach.html" class="btn btn-dark btn-block">Devenir coach</a>
+        </article>
+        <article class="price-card">
+          <p class="price-name">Pro</p>
+          <p class="price-amount">10%<small>de commission</small></p>
+          <p class="price-desc">Plus de 40 heures de coaching dans le mois.</p>
+          <ul class="price-feats">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Tout le palier Confirmé</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Accompagnement dédié</li>
+          </ul>
+          <a href="devenir-coach.html#simulateur" class="btn btn-dark btn-block">Simuler mes revenus</a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq light section" data-theme="light" data-rise>
+  <div class="container faq-layout">
+    <div class="faq-side">
+      <p class="eyebrow" data-reveal>(02) Questions</p>
+      <h2 class="display display-l" data-split>
+        <span class="line">Rien de</span>
+        <span class="line">caché</span>
+      </h2>
+      <p class="faq-note" data-reveal>Une question sur ta facture&nbsp;? Écris-nous.</p>
+      <a href="contact.html" class="btn btn-dark" data-reveal data-magnetic><span data-roll>Nous écrire</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item" data-reveal>
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="tf-1" id="tf-q1"><span class="faq-n">01</span><span class="faq-t">Y a-t-il des frais cachés&nbsp;?</span><span class="faq-ico" aria-hidden="true"></span></button>
+        <div class="faq-a" id="tf-1" role="region" aria-labelledby="tf-q1"><div><p>Non. L'inscription est gratuite et le prix affiché sur le profil du coach est le prix que tu paies, frais de service compris.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="tf-2" id="tf-q2"><span class="faq-n">02</span><span class="faq-t">Comment fonctionnent les formules&nbsp;?</span><span class="faq-ico" aria-hidden="true"></span></button>
+        <div class="faq-a" id="tf-2" role="region" aria-labelledby="tf-q2"><div><p>Il n'y a pas de remise imposée par le club : chaque coach crée ses propres formules (nombre de séances, réduction, conditions) depuis son espace pro. Elles s'affichent dans l'onglet « Mes formules » de son profil et s'appliquent en un clic à ta réservation.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="tf-3" id="tf-q3"><span class="faq-n">03</span><span class="faq-t">Quand suis-je débité&nbsp;?</span><span class="faq-ico" aria-hidden="true"></span></button>
+        <div class="faq-a" id="tf-3" role="region" aria-labelledby="tf-q3"><div><p>Au moment de la réservation. Si tu annules au moins 48h avant le début de la séance, tu es remboursé intégralement, sans justification. Entre 48h et 1h avant, tu peux encore annuler, mais seuls 50 % de la séance sont remboursés. À moins d'1h du début, la séance est due en totalité, sans remboursement. Avec un justificatif médical, tu peux plutôt reporter gratuitement ta séance depuis ton espace, au plus tard 5h avant le début.</p></div></div>
+      </div>
+      <div class="faq-item" data-reveal>
+        <button class="faq-q" type="button" aria-expanded="false" aria-controls="tf-4" id="tf-q4"><span class="faq-n">04</span><span class="faq-t">Comment est calculée la commission coach&nbsp;?</span><span class="faq-ico" aria-hidden="true"></span></button>
+        <div class="faq-a" id="tf-4" role="region" aria-labelledby="tf-q4"><div><p>Elle dépend de tes heures du mois : aucun frais sous 10 heures, 5 % de 10 à 30 heures, 7 % de 30 à 40 heures et 10 % au-delà de 40 heures. Le palier est recalculé chaque mois, automatiquement, et la commission n'est prélevée que sur les séances réalisées.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

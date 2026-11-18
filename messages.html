@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages — Sport2Share</title>
+  <meta name="description" content="La messagerie Sport2Share : discute avec ton coach avant et après tes séances.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="messages">
+<script src="layout.js" data-part="header"></script>
+
+<!-- Messagerie de démonstration : les conversations sont gardées dans le navigateur, les réponses sont simulées -->
+<main>
+<div class="dash" id="top" data-theme="light">
+  <aside class="dash-side" aria-label="Menu de l'espace membre">
+    <div class="dash-user">
+      <span class="dash-av" data-dash-initial>C</span>
+      <div><b data-dash-name>Camille</b><span data-dash-role>Compte élève</span></div>
+    </div>
+    <a class="dash-link" href="espace.html"><svg aria-hidden="true"><use href="#i-grid"/></svg><span>Tableau de bord</span></a>
+    <a class="dash-link" href="pro.html" data-coach-only><svg aria-hidden="true"><use href="#i-wallet"/></svg><span>Espace pro</span></a>
+    <a class="dash-link" href="espace.html#carte-pro" data-coach-only><svg aria-hidden="true"><use href="#i-card"/></svg><span>Carte pro</span></a>
+    <a class="dash-link" href="espace.html#seances"><svg aria-hidden="true"><use href="#i-calendar"/></svg><span>Mes séances</span></a>
+    <a class="dash-link" href="espace.html#historique" data-eleve-only><svg aria-hidden="true"><use href="#i-star"/></svg><span>Noter mes coachs</span></a>
+    <a class="dash-link is-active" href="messages.html" aria-current="page"><svg aria-hidden="true"><use href="#i-chat"/></svg><span>Messages</span><span class="dash-badge" data-unread-total hidden></span></a>
+    <a class="dash-link" href="decouvrir.html" data-eleve-only><svg aria-hidden="true"><use href="#i-search"/></svg><span>Trouver un coach</span></a>
+    <a class="dash-link dash-out" href="index.html" data-logout><svg aria-hidden="true"><use href="#i-logout"/></svg><span>Déconnexion</span></a>
+  </aside>
+
+  <div class="dash-main">
+    <div class="dash-head">
+      <div>
+        <h1 class="display dash-hello" data-split data-hero><span class="line">Messages</span></h1>
+        <p class="dash-date" data-intro style="--d:.3s" data-role-text data-eleve="Discute avec tes coachs avant et après tes séances." data-coach="Réponds à tes élèves et suis leur progression.">Discute avec tes coachs avant et après tes séances.</p>
+      </div>
+    </div>
+
+    <div class="msg-app" data-msg-app data-intro style="--d:.35s">
+      <aside class="msg-list" aria-label="Conversations">
+        <div class="msg-search">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+          <input type="search" placeholder="Rechercher un nom…" aria-label="Rechercher une conversation" data-msg-search autocomplete="off">
+        </div>
+        <div class="msg-convs" role="list" data-msg-convs></div>
+      </aside>
+      <section class="msg-thread" aria-label="Conversation">
+        <header class="msg-head" data-msg-head></header>
+        <div class="msg-log" data-msg-log aria-live="polite"></div>
+        <div class="msg-quick" data-msg-quick aria-label="Réponses rapides"></div>
+        <form class="chat-form msg-form" data-msg-form hidden>
+          <label class="sr-only" for="msg-input">Ton message</label>
+          <input id="msg-input" type="text" placeholder="Écris un message…" autocomplete="off" maxlength="600">
+          <button type="submit" class="btn btn-dark" aria-label="Envoyer"><svg aria-hidden="true"><use href="#i-send"/></svg></button>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

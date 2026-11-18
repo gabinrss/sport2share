@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le club — Sport2Share</title>
+  <meta name="description" content="Le manifeste, l'histoire et l'équipe de Sport2Share, le club où l'on choisit son coach sportif.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="a-propos">
+<script src="layout.js" data-part="header"></script>
+
+<main>
+
+<section class="page-hero dark" id="top" data-theme="dark">
+  <div class="hero-spot" data-spot aria-hidden="true"></div>
+  <nav class="crumbs" aria-label="Fil d'Ariane" data-intro><a href="index.html">Accueil</a><span aria-hidden="true">/</span><span>Le club</span></nav>
+  <h1 class="display page-title" data-split data-hero>
+    <span class="line">Le sport</span>
+    <span class="line">se partage</span>
+  </h1>
+  <div class="page-hero-row" data-intro style="--d:.3s">
+    <p class="page-lead">Sport2Share est né d'une idée simple : un bon coach peut changer une saison entière. Encore faut-il le trouver.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>2024</b><span>naissance du club</span></div>
+      <div class="hero-stat"><b>12 400</b><span>sportifs accompagnés</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="light section" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(01) Manifeste</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Ce qui nous fait lever le matin.</p>
+    </div>
+    <p class="scrub" data-scrub>On croit que le sport se vit mieux à deux. Qu'un regard expert vaut mieux que mille vidéos. Qu'on progresse plus vite quand quelqu'un croit en nous. Alors on a construit <mark>un club, pas un annuaire</mark> : des coachs vérifiés, des profils transparents pour choisir en confiance, et des séances qui laissent une trace. Du premier footing au premier podium, <mark>on joue avec toi.</mark></p>
+  </div>
+</section>
+
+<section class="light section" data-theme="light" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(02) Nos valeurs</p>
+    </div>
+    <div class="values">
+      <div class="value" data-reveal><span>01</span><h3>L'exigence</h3><p>Moins de 30 % des coachs qui postulent rejoignent le club. Identité, carte pro, diplômes, avis : on ne transige pas.</p></div>
+      <div class="value" data-reveal><span>02</span><h3>La proximité</h3><p>Un coach près de chez toi, à ton niveau, sur tes créneaux. Le coach que tu choisis, pas le premier venu.</p></div>
+      <div class="value" data-reveal><span>03</span><h3>La confiance</h3><p>Paiement sécurisé, avis vérifiés, annulation simple. Tu sais toujours où tu mets les pieds.</p></div>
+      <div class="value" data-reveal><span>04</span><h3>Le plaisir</h3><p>On progresse quand on prend du plaisir. Chaque séance doit donner envie de revenir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark section" data-theme="dark">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(03) Notre histoire</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Trois saisons, et ce n'est qu'un début.</p>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">De l'idée</span>
+      <span class="line">au club</span>
+    </h2>
+    <div class="years">
+      <div class="year" data-reveal><b>2024</b><h3>L'idée</h3><p>Deux sportifs fatigués de chercher un coach sur des annuaires sans fin imaginent un club où l'on choisit son coach en toute transparence.</p></div>
+      <div class="year" data-reveal style="--rd:.08s"><b>2025</b><h3>Le lancement</h3><p>Premières séances à Lyon, puis Paris, Marseille et Bordeaux. 400 coachs au compteur.</p></div>
+      <div class="year" data-reveal style="--rd:.16s"><b>2026</b><h3>1 850 coachs</h3><p>61 sports, 12 400 sportifs accompagnés et une note moyenne de 4,9 sur 5.</p></div>
+      <div class="year" data-reveal style="--rd:.24s"><b>Demain</b><h3>Partout</h3><p>Toute la France, des clubs partenaires et des stages encadrés pendant les vacances.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Équipe : noms et rôles fictifs, à remplacer par les vrais membres -->
+<section class="light section" data-theme="light" data-rise>
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>(04) L'équipe</p>
+      <p class="sec-note" data-reveal style="--rd:.1s">Tous sportifs, tous obsédés par le bon coach.</p>
+    </div>
+    <h2 class="display display-l sec-title" data-split>
+      <span class="line">Les têtes</span>
+      <span class="line">du club</span>
+    </h2>
+    <div class="team">
+      <article class="member" data-tilt data-reveal><div class="member-in">
+        <div class="coach-visual v-plum"><span class="coach-initials">AG</span><span class="coach-glare"></span></div>
+        <div class="member-body"><h3>Alex Garnier</h3><p>Cofondateur · ancien joueur de handball</p></div>
+      </div></article>
+      <article class="member" data-tilt data-reveal style="--rd:.08s"><div class="member-in">
+        <div class="coach-visual v-teal"><span class="coach-initials">ML</span><span class="coach-glare"></span></div>
+        <div class="member-body"><h3>Maya Lefèvre</h3><p>Cofondatrice · produit &amp; expérience</p></div>
+      </div></article>
+      <article class="member" data-tilt data-reveal style="--rd:.16s"><div class="member-in">
+        <div class="coach-visual v-esp"><span class="coach-initials">RC</span><span class="coach-glare"></span></div>
+        <div class="member-body"><h3>Rayan Cohen</h3><p>Tech · traileur du dimanche</p></div>
+      </div></article>
+      <article class="member" data-tilt data-reveal style="--rd:.24s"><div class="member-in">
+        <div class="coach-visual v-black"><span class="coach-initials">ZP</span><span class="coach-glare"></span></div>
+        <div class="member-body"><h3>Zoé Perrin</h3><p>Communauté coachs · boxeuse</p></div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<section class="light section" id="presse" data-theme="light" data-rise>
+  <div class="container">
+    <div class="press" data-reveal>
+      <div>
+        <p class="eyebrow" style="color:var(--mint)">(05) Presse</p>
+        <h2>Kit presse</h2>
+        <p>Logos, visuels, chiffres clés et contacts de l'équipe. Pour une interview ou un reportage, écris-nous : on te répond au plus vite.</p>
+      </div>
+      <a href="contact.html?sujet=Presse" class="btn btn-lg" data-magnetic><span data-roll>Contacter l'équipe</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script src="layout.js" data-part="footer"></script>
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

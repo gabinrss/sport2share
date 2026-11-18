@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Espace pro — Sport2Share</title>
+  <meta name="description" content="L'espace pro des coachs Sport2Share : réservations, messages, élèves, revenus et profil.">
+  <meta name="theme-color" content="#23002b">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="db.js"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="pro" class="is-app">
+<script src="layout.js" data-part="header"></script>
+
+<!-- Espace pro (CRM du coach) : tout est généré par pages.js, données de démonstration gardées dans le navigateur -->
+<main class="pro" data-pro>
+<div class="pro-wrap" id="top" data-theme="light">
+  <p class="pro-demo" data-pro-demo hidden>Aperçu de démonstration — connecte-toi avec le compte <b>coach@sport2share.fr</b> pour l'espace pro d'Inès.</p>
+
+  <!-- ACCUEIL -->
+  <section class="pro-panel is-active" id="p-home" role="tabpanel" aria-labelledby="t-home" data-panel="home">
+    <div class="pro-head">
+      <div>
+        <h1 class="display pro-title" data-split data-hero data-pro-hello><span class="line">Bonjour</span><span class="line">Inès</span></h1>
+        <p class="pro-sub" data-pro-date></p>
+      </div>
+      <div class="pro-head-actions">
+        <span class="status status-ok" data-pro-visibility><i></i>Profil visible</span>
+        <a class="btn btn-dark" href="coach.html" data-pro-public>Voir mon profil public<svg class="ico" aria-hidden="true"><use href="#i-arrow-ne"/></svg></a>
+      </div>
+    </div>
+    <div class="pro-publish" data-pro-publish></div>
+    <div class="pro-kpis" data-pro-kpis></div>
+    <div class="pro-grid">
+      <article class="pcard span-7">
+        <h2>Aujourd'hui <button type="button" class="pcard-link" data-goto="agenda">Agenda complet →</button></h2>
+        <div class="pro-list" data-pro-today></div>
+      </article>
+      <article class="pcard span-5 pcard-dark">
+        <h2>Demandes à valider <span class="tab-count" data-pro-pending-count></span></h2>
+        <div class="pro-list" data-pro-pending></div>
+      </article>
+      <article class="pcard span-12">
+        <h2>À faire</h2>
+        <div class="pro-todo" data-pro-todo></div>
+      </article>
+      <!-- Notifications : demandes, annulations, reports et avis des élèves (rempli par pages.js) -->
+      <article class="pcard span-12 notif-card" data-notifs></article>
+    </div>
+  </section>
+
+  <!-- RÉSERVATIONS -->
+  <section class="pro-panel" id="p-agenda" role="tabpanel" aria-labelledby="t-agenda" data-panel="agenda" hidden>
+    <div class="pro-head">
+      <div>
+        <h2 class="display pro-title">Réservations</h2>
+        <p class="pro-sub">Accepte les demandes, marque les séances terminées, ajoute tes créneaux.</p>
+      </div>
+      <button type="button" class="btn btn-dark" data-pro-add>Ajouter une séance<svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg></button>
+    </div>
+    <div class="pro-week" data-pro-week></div>
+    <div class="pro-status" role="group" aria-label="Filtrer par statut" data-pro-status></div>
+    <form class="pcard pro-addform" data-pro-addform hidden></form>
+    <div class="pro-list pro-list-lg" data-pro-agenda></div>
+  </section>
+
+  <!-- MESSAGES -->
+  <section class="pro-panel" id="p-messages" role="tabpanel" aria-labelledby="t-messages" data-panel="messages" hidden>
+    <div class="pro-head">
+      <div>
+        <h2 class="display pro-title">Messages</h2>
+        <p class="pro-sub">Réponds à tes élèves avant et après leurs séances.</p>
+      </div>
+    </div>
+    <div class="msg-app" data-msg-app data-force-role="coach">
+      <aside class="msg-list" aria-label="Conversations">
+        <div class="msg-search">
+          <svg aria-hidden="true"><use href="#i-search"/></svg>
+          <input type="search" placeholder="Rechercher un élève…" aria-label="Rechercher une conversation" data-msg-search autocomplete="off">
+        </div>
+        <div class="msg-convs" role="list" data-msg-convs></div>
+      </aside>
+      <section class="msg-thread" aria-label="Conversation">
+        <header class="msg-head" data-msg-head></header>
+        <div class="msg-log" data-msg-log aria-live="polite"></div>
+        <div class="msg-quick" data-msg-quick aria-label="Réponses rapides"></div>
+        <form class="chat-form msg-form" data-msg-form hidden>
+          <label class="sr-only" for="msg-input">Ton message</label>
+          <input id="msg-input" type="text" placeholder="Écris un message…" autocomplete="off" maxlength="600">
+          <button type="submit" class="btn btn-dark" aria-label="Envoyer"><svg aria-hidden="true"><use href="#i-send"/></svg></button>
+        </form>
+      </section>
+    </div>
+  </section>
+
+  <!-- ÉLÈVES -->
+  <section class="pro-panel" id="p-clients" role="tabpanel" aria-labelledby="t-clients" data-panel="clients" hidden>
+    <div class="pro-head">
+      <div>
+        <h2 class="display pro-title">Mes élèves</h2>
+        <p class="pro-sub">Ton carnet d'élèves : séances, progression et notes privées.</p>
+      </div>
+      <label class="vx-field pro-search"><svg aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="Chercher un élève…" aria-label="Chercher un élève" data-pro-client-q></label>
+    </div>
+    <div class="pro-clients" data-pro-clients></div>
+  </section>
+
+  <!-- REVENUS -->
+  <section class="pro-panel" id="p-revenus" role="tabpanel" aria-labelledby="t-revenus" data-panel="revenus" hidden>
+    <div class="pro-head">
+      <div>
+        <h2 class="display pro-title">Revenus</h2>
+        <p class="pro-sub">Chiffre d'affaires, commission et virements. Montants de démonstration.</p>
+      </div>
+    </div>
+    <div data-pro-revenus></div>
+  </section>
+
+  <!-- PROFIL -->
+  <section class="pro-panel" id="p-profil" role="tabpanel" aria-labelledby="t-profil" data-panel="profil" hidden>
+    <div class="pro-head">
+      <div>
+        <h2 class="display pro-title">Mon profil</h2>
+        <p class="pro-sub">Annonce, identité, carte professionnelle, lieux, formules et disponibilités.</p>
+      </div>
+    </div>
+    <div class="pro-publish" data-pro-publish></div>
+    <article class="ach-card" id="succes" data-achievements></article>
+    <article class="dcard dcard-dark idbox" id="identite" data-idcard style="margin-top:16px"></article>
+    <article class="dcard dcard-dark procard" id="carte-pro" data-procard style="margin-top:16px"></article>
+    <div class="pro-grid" style="margin-top:16px">
+      <article class="pcard span-7" id="dispos">
+        <h2>Disponibilités <span class="pcard-hint">Clique pour ouvrir ou fermer un créneau</span></h2>
+        <div class="avail" data-pro-avail></div>
+      </article>
+      <article class="pcard span-5">
+        <h2>Tarif</h2>
+        <div data-pro-rate></div>
+      </article>
+      <article class="pcard span-12" id="lieux">
+        <h2>Où tu coaches <span class="pcard-hint">Active les lieux proposés : l'élève choisit à la réservation</span></h2>
+        <div data-pro-places></div>
+      </article>
+      <article class="pcard span-12" id="formules">
+        <h2>Mes formules <a class="pcard-link" href="coach.html" data-pro-formules-link>Voir sur mon profil →</a></h2>
+        <div data-pro-formules></div>
+      </article>
+      <article class="pcard span-12" id="description">
+        <h2>Ma description <span class="pcard-hint">Le texte « À propos » de ton annonce</span></h2>
+        <div data-pro-bio></div>
+      </article>
+      <article class="pcard span-12" id="seance">
+        <h2>Ma séance type <span class="pcard-hint">Le déroulé d'une séance, affiché sur ton profil</span></h2>
+        <div data-pro-seance></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Fiche élève (tiroir) -->
+  <div class="drawer" data-pro-drawer hidden>
+    <div class="drawer-box" role="dialog" aria-modal="true" aria-label="Fiche élève" data-pro-drawer-box></div>
+  </div>
+</div>
+
+<!-- Barre d'onglets en bas -->
+<nav class="tabbar" role="tablist" aria-label="Espace pro" data-tabbar>
+  <span class="tabbar-ind" aria-hidden="true" data-tabbar-ind></span>
+  <button type="button" class="tab is-active" role="tab" id="t-home" aria-controls="p-home" aria-selected="true" data-tab="home"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Accueil</span></button>
+  <button type="button" class="tab" role="tab" id="t-agenda" aria-controls="p-agenda" aria-selected="false" tabindex="-1" data-tab="agenda"><svg aria-hidden="true"><use href="#i-calendar"/></svg><span class="tab-full">Réservations</span><span class="tab-short" aria-hidden="true">Résas</span><b class="tab-badge" data-badge="agenda" hidden></b></button>
+  <button type="button" class="tab" role="tab" id="t-messages" aria-controls="p-messages" aria-selected="false" tabindex="-1" data-tab="messages"><svg aria-hidden="true"><use href="#i-chat"/></svg><span>Messages</span><b class="tab-badge" data-badge="messages" hidden></b></button>
+  <button type="button" class="tab" role="tab" id="t-clients" aria-controls="p-clients" aria-selected="false" tabindex="-1" data-tab="clients"><svg aria-hidden="true"><use href="#i-users"/></svg><span>Élèves</span></button>
+  <button type="button" class="tab" role="tab" id="t-revenus" aria-controls="p-revenus" aria-selected="false" tabindex="-1" data-tab="revenus"><svg aria-hidden="true"><use href="#i-wallet"/></svg><span>Revenus</span></button>
+  <button type="button" class="tab" role="tab" id="t-profil" aria-controls="p-profil" aria-selected="false" tabindex="-1" data-tab="profil"><svg aria-hidden="true"><use href="#i-card"/></svg><span>Profil</span></button>
+</nav>
+</main>
+
+<script src="data.js"></script>
+<script src="pages.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
